@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T12:52:20.041Z",
+  "generatedAt": "2026-09-06T12:56:27.659Z",
   "scenes": [
     {
       "id": "20260831_15tree",
@@ -21,7 +21,8 @@
       },
       "converted": {
         "file": "gs/20260831_15tree.sog",
-        "bytes": 12542897
+        "bytes": 12542897,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -47,7 +48,8 @@
       },
       "converted": {
         "file": "gs/20260831_15tree_2.sog",
-        "bytes": 12542897
+        "bytes": 12542897,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -70,7 +72,8 @@
       },
       "converted": {
         "file": "gs/20260831_596-599.sog",
-        "bytes": 12692109
+        "bytes": 12692109,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -93,7 +96,8 @@
       },
       "converted": {
         "file": "gs/20260831_single01.sog",
-        "bytes": 12640351
+        "bytes": 12640351,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -116,7 +120,8 @@
       },
       "converted": {
         "file": "gs/20260902_684.sog",
-        "bytes": 13076495
+        "bytes": 13076495,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -139,7 +144,8 @@
       },
       "converted": {
         "file": "gs/20260902_685.sog",
-        "bytes": 11919573
+        "bytes": 11919573,
+        "gaussians": 914386
       },
       "location": null,
       "thumbnail": null,
@@ -162,7 +168,8 @@
       },
       "converted": {
         "file": "gs/20260902_686.sog",
-        "bytes": 13064958
+        "bytes": 13064958,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -185,7 +192,8 @@
       },
       "converted": {
         "file": "gs/20260902_687.sog",
-        "bytes": 12994512
+        "bytes": 12994512,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -208,7 +216,8 @@
       },
       "converted": {
         "file": "gs/20260902_688.sog",
-        "bytes": 12966770
+        "bytes": 12966770,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -231,7 +240,8 @@
       },
       "converted": {
         "file": "gs/20260902_689.sog",
-        "bytes": 13046874
+        "bytes": 13046874,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -254,7 +264,8 @@
       },
       "converted": {
         "file": "gs/20260902_690.sog",
-        "bytes": 13046874
+        "bytes": 13046874,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -277,7 +288,8 @@
       },
       "converted": {
         "file": "gs/20260902_691.sog",
-        "bytes": 13240496
+        "bytes": 13240496,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -300,7 +312,8 @@
       },
       "converted": {
         "file": "gs/20260902_693.sog",
-        "bytes": 12958986
+        "bytes": 12958986,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,
@@ -323,7 +336,8 @@
       },
       "converted": {
         "file": "gs/20260903_692.sog",
-        "bytes": 13066659
+        "bytes": 13066659,
+        "gaussians": 1000000
       },
       "location": null,
       "thumbnail": null,

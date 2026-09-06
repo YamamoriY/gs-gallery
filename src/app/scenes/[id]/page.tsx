@@ -26,9 +26,18 @@ export default async function ScenePage({
   const facts: [string, string][] = [
     ["撮影日", scene.capturedAt ?? "—"],
     ["学習日", scene.trainedAt],
-    ["ガウシアン数", `${formatCount(scene.source.gaussians)} (元データ)`],
-    ["元 PLY", `${formatBytes(scene.source.bytes)} / SH${scene.source.shDegree ?? "?"}`],
-    ["配信データ", scene.converted ? formatBytes(scene.converted.bytes) : "—"],
+    [
+      "元データ",
+      `${formatCount(scene.source.gaussians)} ガウシアン / ` +
+        `${formatBytes(scene.source.bytes)} / SH${scene.source.shDegree ?? "?"}`,
+    ],
+    [
+      "配信データ",
+      scene.converted
+        ? `${scene.converted.gaussians ? `${formatCount(scene.converted.gaussians)} ガウシアン / ` : ""}` +
+          formatBytes(scene.converted.bytes)
+        : "—",
+    ],
     ["元の写真", scene.imageCount !== null ? `${scene.imageCount} 枚` : "—"],
     ["プロジェクト", scene.sourceProject ?? "—"],
   ];

@@ -9,6 +9,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import {
   SOURCE_DIR,
   DATA_DIR,
@@ -66,6 +67,21 @@ function countImages(project) {
     );
 }
 
+/** 変換済み SOG に実際に何点入っているかを splat-transform に聞く */
+function countGaussians(sogPath) {
+  try {
+    const out = execFileSync(
+      "npx",
+      ["--yes", "@playcanvas/splat-transform", "--no-tty", "-q", sogPath,
+       "--info", "json", "null"],
+      { encoding: "utf8", shell: process.platform === "win32" },
+    );
+    return JSON.parse(out).numGaussians ?? null;
+  } catch {
+    return null;
+  }
+}
+
 /** scripts/thumbs.mjs が作ったカード画像を拾う */
 function findThumb(id) {
   const rel = `thumbs/${id}.webp`;
@@ -103,9 +119,20 @@ function main() {
     const project = overrides[id]?.sourceProject ?? findProject(id);
 
     const sog = path.join(GS_DIR, `${id}.sog`);
-    const converted = fs.existsSync(sog)
-      ? { file: `gs/${id}.sog`, bytes: fs.statSync(sog).size }
-      : (previous.get(id)?.converted ?? null);
+    let converted = previous.get(id)?.converted ?? null;
+    if (fs.existsSync(sog)) {
+      const bytes = fs.statSync(sog).size;
+      // 点数を数えるのは遅いので、ファイルが変わっていなければ使い回す。
+      // 点数を持っていない古いカタログからは数え直す。
+      converted =
+        converted?.bytes === bytes && converted.gaussians != null
+          ? converted
+          : {
+              file: `gs/${id}.sog`,
+              bytes,
+              gaussians: countGaussians(sog),
+            };
+    }
 
     return {
       id,

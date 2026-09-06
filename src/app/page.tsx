@@ -3,7 +3,10 @@ import { getScenes, formatBytes, formatCount } from "@/lib/scenes";
 
 export default function Home() {
   const scenes = getScenes();
-  const totalGaussians = scenes.reduce((a, s) => a + s.source.gaussians, 0);
+  const totalGaussians = scenes.reduce(
+    (a, s) => a + (s.converted?.gaussians ?? 0),
+    0,
+  );
   const totalBytes = scenes.reduce((a, s) => a + (s.converted?.bytes ?? 0), 0);
 
   return (

@@ -43,15 +43,17 @@ export function SceneCard({ scene }: { scene: Scene }) {
         )}
 
         <dl className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-paper-dim">
-          <div>
-            <dt className="inline">点数 </dt>
-            <dd className="inline text-paper">
-              {formatCount(scene.source.gaussians)}
-            </dd>
-          </div>
+          {scene.converted?.gaussians && (
+            <div>
+              <dt className="inline">点数 </dt>
+              <dd className="inline text-paper">
+                {formatCount(scene.converted.gaussians)}
+              </dd>
+            </div>
+          )}
           {scene.converted && (
             <div>
-              <dt className="inline">配信 </dt>
+              <dt className="inline">容量 </dt>
               <dd className="inline text-paper">
                 {formatBytes(scene.converted.bytes)}
               </dd>

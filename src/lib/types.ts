@@ -13,6 +13,8 @@ export interface SceneConverted {
   /** public/ からの相対パス */
   file: string;
   bytes: number;
+  /** 実際に配信される点数。元データより大幅に少ない */
+  gaussians: number | null;
 }
 
 /** 将来の地図連携用。overrides に書くと地図にピンが立つ */
