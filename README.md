@@ -1,6 +1,9 @@
-# data_mori 3DGS アーカイブ
+# gs-gallery
+
+data_mori の 3D Gaussian Splatting アーカイブ。
 
 `data_mori/成果物` の 3D Gaussian Splatting をブラウザで見られる形にまとめて公開するサイト。
+公開先は https://yamamoriy.github.io/gs-gallery/ 。
 
 ## なぜ変換が要るか
 
