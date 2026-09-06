@@ -1,0 +1,11 @@
+[project]
+name = "mori-denoise"
+version = "0.1.0"
+description = "3DGS の PLY からノイズを落とす"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "numpy>=1.26",
+    "plyfile>=1.0",
+    "scikit-learn>=1.4",
+    "scipy>=1.11",
+]

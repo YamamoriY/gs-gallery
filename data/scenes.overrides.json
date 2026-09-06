@@ -1,0 +1,26 @@
+{
+  "_comment": "手で書くメタ情報。scripts/scan.mjs がここを scenes.json にマージするので、scan を回し直しても消えません。使えるキー: title, description, tags, capturedAt, imageCount, sourceProject, location {latitude, longitude}, thumbnail, thumbnailSource, hidden, denoise",
+  "20260831_15tree": {
+    "title": "15本の樹 (Osmo)",
+    "tags": [
+      "樹木",
+      "Osmo"
+    ],
+    "denoise": "box",
+    "description": "全体を見せたいシーンなので、遠方ノイズを箱で落とすだけにして実体は削らない。"
+  },
+  "20260831_596-599": {
+    "sourceProject": "archive/2026-08-31_15tree_osmo_rigfocal",
+    "thumbnailSource": "00_0831_15tree_00597.jpg",
+    "description": "8眼リグのフレーム596-599のみで学習。"
+  },
+  "20260831_15tree_2": {
+    "title": "15本の樹 (Osmo) 2",
+    "tags": [
+      "樹木",
+      "Osmo"
+    ],
+    "denoise": "box",
+    "description": "全体を見せたいシーンなので、遠方ノイズを箱で落とすだけにして実体は削らない。"
+  }
+}

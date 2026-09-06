@@ -1,0 +1,333 @@
+{
+  "generatedAt": "2026-09-06T12:52:20.041Z",
+  "scenes": [
+    {
+      "id": "20260831_15tree",
+      "title": "15本の樹 (Osmo)",
+      "description": "全体を見せたいシーンなので、遠方ノイズを箱で落とすだけにして実体は削らない。",
+      "tags": [
+        "樹木",
+        "Osmo"
+      ],
+      "capturedAt": "2026-08-31",
+      "trainedAt": "2026-09-02",
+      "sourceProject": "2026-08-31_15tree_osmo",
+      "imageCount": 775,
+      "source": {
+        "file": "20260831_15tree.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260831_15tree.sog",
+        "bytes": 12542897
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260831_15tree_2",
+      "title": "15本の樹 (Osmo) 2",
+      "description": "全体を見せたいシーンなので、遠方ノイズを箱で落とすだけにして実体は削らない。",
+      "tags": [
+        "樹木",
+        "Osmo"
+      ],
+      "capturedAt": "2026-08-31",
+      "trainedAt": "2026-09-02",
+      "sourceProject": "2026-08-31_15tree_osmo",
+      "imageCount": 775,
+      "source": {
+        "file": "20260831_15tree_2.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260831_15tree_2.sog",
+        "bytes": 12542897
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260831_596-599",
+      "title": "596-599",
+      "description": "8眼リグのフレーム596-599のみで学習。",
+      "tags": [],
+      "capturedAt": "2026-08-31",
+      "trainedAt": "2026-09-02",
+      "sourceProject": "archive/2026-08-31_15tree_osmo_rigfocal",
+      "imageCount": 6200,
+      "source": {
+        "file": "20260831_596-599.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260831_596-599.sog",
+        "bytes": 12692109
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260831_single01",
+      "title": "single01",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-08-31",
+      "trainedAt": "2026-09-01",
+      "sourceProject": null,
+      "imageCount": null,
+      "source": {
+        "file": "20260831_single01.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260831_single01.sog",
+        "bytes": 12640351
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_684",
+      "title": "684",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-03",
+      "sourceProject": "2026-09-02_684",
+      "imageCount": 201,
+      "source": {
+        "file": "20260902_684.ply",
+        "bytes": 1176574044,
+        "gaussians": 4744244,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_684.sog",
+        "bytes": 13076495
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_685",
+      "title": "685",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-03",
+      "sourceProject": "2026-09-02_685",
+      "imageCount": 143,
+      "source": {
+        "file": "20260902_685.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_685.sog",
+        "bytes": 11919573
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_686",
+      "title": "686",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-03",
+      "sourceProject": "2026-09-02_686",
+      "imageCount": 202,
+      "source": {
+        "file": "20260902_686.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_686.sog",
+        "bytes": 13064958
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_687",
+      "title": "687",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-03",
+      "sourceProject": "2026-09-02_687",
+      "imageCount": 152,
+      "source": {
+        "file": "20260902_687.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_687.sog",
+        "bytes": 12994512
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_688",
+      "title": "688",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-03",
+      "sourceProject": "2026-09-02_688",
+      "imageCount": 138,
+      "source": {
+        "file": "20260902_688.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_688.sog",
+        "bytes": 12966770
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_689",
+      "title": "689",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-03",
+      "sourceProject": "2026-09-02_689",
+      "imageCount": 208,
+      "source": {
+        "file": "20260902_689.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_689.sog",
+        "bytes": 13046874
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_690",
+      "title": "690",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-04",
+      "sourceProject": "2026-09-02_690",
+      "imageCount": 145,
+      "source": {
+        "file": "20260902_690.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_690.sog",
+        "bytes": 13046874
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_691",
+      "title": "691",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-04",
+      "sourceProject": "2026-09-02_691",
+      "imageCount": 180,
+      "source": {
+        "file": "20260902_691.ply",
+        "bytes": 1009290852,
+        "gaussians": 4069715,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_691.sog",
+        "bytes": 13240496
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_693",
+      "title": "693",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-04",
+      "sourceProject": "2026-09-02_693",
+      "imageCount": 118,
+      "source": {
+        "file": "20260902_693.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_693.sog",
+        "bytes": 12958986
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260903_692",
+      "title": "692",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-03",
+      "trainedAt": "2026-09-04",
+      "sourceProject": "2026-09-02_692",
+      "imageCount": 219,
+      "source": {
+        "file": "20260903_692.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260903_692.sog",
+        "bytes": 13066659
+      },
+      "location": null,
+      "thumbnail": null,
+      "hidden": false
+    }
+  ]
+}

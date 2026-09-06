@@ -1,0 +1,19 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+.env*.local
+
+# 変換済み GS データ。容量が読めるうちはコミットする方針だが、
+# 膨らんだら外部ストレージに逃がせるようここで切り替える
+# /public/gs/
+/public/viewer/
+/.cache/
+
+# 手元での比較用。リポジトリには入れない
+/public/gs/_compare_*
+
+# uv が作る Python 環境
+scripts/denoise/.venv/

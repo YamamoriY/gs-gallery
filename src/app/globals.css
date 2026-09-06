@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bark: #14100c;
+  --color-bark-soft: #1e1811;
+  --color-moss: #7fb069;
+  --color-moss-dim: #4a6b3d;
+  --color-paper: #efeae1;
+  --color-paper-dim: #9a9284;
+}
+
+html,
+body {
+  background: var(--color-bark);
+  color: var(--color-paper);
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, "Hiragino Sans", "Noto Sans JP",
+    sans-serif;
+}
