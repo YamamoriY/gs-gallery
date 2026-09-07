@@ -1,13 +1,21 @@
 {
-  "_comment": "手で書くメタ情報。scripts/scan.mjs がここを scenes.json にマージするので、scan を回し直しても消えません。使えるキー: title, description, tags, capturedAt, imageCount, sourceProject, pointId, hidden, denoise",
+  "_comment": "手で書くメタ情報。scripts/scan.mjs がここを scenes.json にマージするので、scan を回し直しても消えません。使えるキー: trees, title, description, tags, capturedAt, imageCount, sourceProject, pointId, hidden, denoise",
   "20260831_15tree": {
     "hidden": true,
     "description": "15 本の樹 (Osmo)。ミズナラ直径測定の対象ではないので一旦アーカイブから外している"
   },
   "20260831_596-599": {
-    "hidden": true,
-    "description": "8 眼リグのフレーム 596-599 のみで学習。一旦アーカイブから外している",
-    "sourceProject": "archive/2026-08-31_15tree_osmo_rigfocal"
+    "description": "8 眼リグで撮影。596 (44cm) と 599 (40cm) が入っている。597 と 598 も同じ撮影に写っているが、細く大径木として扱っていないため胸高直径を測っておらず、台帳には載せていない。",
+    "sourceProject": "archive/2026-08-31_15tree_osmo_rigfocal",
+    "title": "15tree リグ撮影 (596-599)",
+    "tags": [
+      "リグ撮影",
+      "8眼"
+    ],
+    "trees": [
+      "596",
+      "599"
+    ]
   },
   "20260831_single01": {
     "hidden": true,

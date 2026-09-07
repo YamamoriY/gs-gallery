@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T03:22:32.527Z",
+  "generatedAt": "2026-09-07T04:03:51.492Z",
   "scenes": [
     {
       "id": "20260831_15tree",
@@ -24,11 +24,14 @@
     },
     {
       "id": "20260831_596-599",
-      "title": "596-599",
-      "description": "8 眼リグのフレーム 596-599 のみで学習。一旦アーカイブから外している",
+      "title": "15tree リグ撮影 (596-599)",
+      "description": "8 眼リグで撮影。596 (44cm) と 599 (40cm) が入っている。597 と 598 も同じ撮影に写っているが、細く大径木として扱っていないため胸高直径を測っておらず、台帳には載せていない。",
       "warning": null,
-      "metresPerUnit": null,
-      "tags": [],
+      "metresPerUnit": 0.4014,
+      "tags": [
+        "リグ撮影",
+        "8眼"
+      ],
       "capturedAt": "2026-08-31",
       "trainedAt": "2026-09-02",
       "sourceProject": "archive/2026-08-31_15tree_osmo_rigfocal",
@@ -39,14 +42,21 @@
         "gaussians": 5000000,
         "shDegree": 3
       },
-      "converted": null,
+      "converted": {
+        "file": "gs/20260831_596-599.sog",
+        "bytes": 12692109,
+        "gaussians": 1000000,
+        "size": [
+          29.998,
+          21.543,
+          24.999
+        ]
+      },
       "treeIds": [
         "596",
-        "597",
-        "598",
         "599"
       ],
-      "hidden": true
+      "hidden": false
     },
     {
       "id": "20260831_single01",

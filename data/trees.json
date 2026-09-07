@@ -1,5 +1,5 @@
 {
-  "_comment": "現地で測った立木。番号は現地の立木番号で、成果物の PLY の名前と一致する。1 つのシーンが複数の立木を含むことがある (萌芽更新した株を 1 回の撮影でまとめて撮っているため)。シーンとの対応はファイル名から自動で決まる。height (m) と volume (m3) は測れたら入れる。1 本でも値が入るとその列が一覧に出る。",
+  "_comment": "現地で測った立木。番号は現地の立木番号で、成果物の PLY の名前と一致する。1 つのシーンが複数の立木を含むことがある (萌芽更新した株を 1 回の撮影でまとめて撮っているため)。シーンとの対応はファイル名から自動で決まる。緯度経度は分かっていなければ null にする (地図には出ないが一覧には出る)。height (m) と volume (m3) は測れたら入れる。1 本でも値が入るとその列が一覧に出る。",
   "_precision": "元の測定値は度分秒で秒が 0.1 秒刻み。地上ではおよそ 3 m 相当なので、十進度の下 6 桁まで書いてあっても実際の精度はそこまで無い。幹の同定は番号と直径で行い、座標は現地に着くまでの目安として使う。",
   "source": {
     "name": "ミズナラ_直径測定",
@@ -8,6 +8,28 @@
     "retrieved": "2026-09-07"
   },
   "trees": [
+    {
+      "id": "596",
+      "species": "未同定",
+      "diameter": 44,
+      "height": null,
+      "volume": null,
+      "latitude": 42.1064,
+      "longitude": 140.6817,
+      "positionEstimated": false,
+      "note": "15tree の 8 眼リグ撮影。596 と 599 は同じ撮影に入っている。位置は 2 本まとめて 1 点で受け取っており、小数 4 桁なので 他の木 (度分秒由来) より粗い。"
+    },
+    {
+      "id": "599",
+      "species": "未同定",
+      "diameter": 40,
+      "height": null,
+      "volume": null,
+      "latitude": 42.1064,
+      "longitude": 140.6817,
+      "positionEstimated": false,
+      "note": "15tree の 8 眼リグ撮影。596 と 599 は同じ撮影に入っている。位置は 2 本まとめて 1 点で受け取っており、小数 4 桁なので 他の木 (度分秒由来) より粗い。"
+    },
     {
       "id": "684",
       "species": "ミズナラ",
@@ -64,6 +86,39 @@
       "volume": null
     },
     {
+      "id": "689",
+      "species": "ミズナラ",
+      "diameter": null,
+      "latitude": 42.10668,
+      "longitude": 140.682194,
+      "positionEstimated": true,
+      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている",
+      "height": null,
+      "volume": null
+    },
+    {
+      "id": "690",
+      "species": "ミズナラ",
+      "diameter": null,
+      "latitude": 42.10668,
+      "longitude": 140.682194,
+      "positionEstimated": true,
+      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている",
+      "height": null,
+      "volume": null
+    },
+    {
+      "id": "691",
+      "species": "ミズナラ",
+      "diameter": null,
+      "latitude": 42.10668,
+      "longitude": 140.682194,
+      "positionEstimated": true,
+      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている",
+      "height": null,
+      "volume": null
+    },
+    {
       "id": "692",
       "species": "ハリギリ",
       "diameter": 52,
@@ -115,39 +170,6 @@
       "longitude": 140.681306,
       "positionEstimated": false,
       "note": "",
-      "height": null,
-      "volume": null
-    },
-    {
-      "id": "689",
-      "species": "ミズナラ",
-      "diameter": null,
-      "latitude": 42.10668,
-      "longitude": 140.682194,
-      "positionEstimated": true,
-      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている",
-      "height": null,
-      "volume": null
-    },
-    {
-      "id": "690",
-      "species": "ミズナラ",
-      "diameter": null,
-      "latitude": 42.10668,
-      "longitude": 140.682194,
-      "positionEstimated": true,
-      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている",
-      "height": null,
-      "volume": null
-    },
-    {
-      "id": "691",
-      "species": "ミズナラ",
-      "diameter": null,
-      "latitude": 42.10668,
-      "longitude": 140.682194,
-      "positionEstimated": true,
-      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている",
       "height": null,
       "volume": null
     }

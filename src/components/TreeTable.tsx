@@ -114,17 +114,23 @@ export function TreeTable({ rows }: { rows: TreeRow[] }) {
               <td className="py-2.5 pr-4 text-paper-dim">{r.species}</td>
 
               <td className="py-2.5 pr-4">
-                <span className="font-mono text-xs text-paper-dim">
-                  {formatLatLng(r.latitude, r.longitude)}
-                </span>
-                <a
-                  href={directionsUrl(r.latitude, r.longitude)}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ml-3 text-xs underline hover:text-paper"
-                >
-                  経路案内
-                </a>
+                {r.latitude !== null && r.longitude !== null ? (
+                  <>
+                    <span className="font-mono text-xs text-paper-dim">
+                      {formatLatLng(r.latitude, r.longitude)}
+                    </span>
+                    <a
+                      href={directionsUrl(r.latitude, r.longitude)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="ml-3 text-xs underline hover:text-paper"
+                    >
+                      経路案内
+                    </a>
+                  </>
+                ) : (
+                  <span className="text-xs text-paper-dim">位置未登録</span>
+                )}
               </td>
 
               <td className="py-2.5">
@@ -136,7 +142,7 @@ export function TreeTable({ rows }: { rows: TreeRow[] }) {
                 </Link>
                 {r.siblingIds.length > 0 && (
                   <span className="ml-2 text-xs text-paper-dim">
-                    {r.siblingIds.join("・")} と同じ株
+                    {r.siblingIds.join("・")} と同じ撮影
                   </span>
                 )}
                 {r.scene.warning && (

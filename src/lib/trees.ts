@@ -13,8 +13,9 @@ export interface Tree {
   height: number | null;
   /** 材積 (m3)。測れたら入れる */
   volume: number | null;
-  latitude: number;
-  longitude: number;
+  /** 位置を測っていなければ null。地図には出ないが一覧には出る */
+  latitude: number | null;
+  longitude: number | null;
   /**
    * 実測ではなく他の木から推定した位置か。
    * 由来の記録として持っているだけで、画面には出していない。
@@ -30,10 +31,13 @@ export interface TreeSource {
   retrieved: string;
 }
 
-/** 1 シーンと、そこに写っている立木。萌芽更新した株は幹が複数になる */
+/**
+ * 1 シーンと、そこに写っている立木のうち位置が分かっているもの。
+ * 地図に置くためのものなので、位置未登録の立木は入らない。
+ */
 export interface SceneTrees {
   scene: Scene;
-  trees: Tree[];
+  trees: PositionedTree[];
   /** 地図に置く位置。含まれる立木の重心 */
   latitude: number;
   longitude: number;
@@ -45,6 +49,13 @@ const data = raw as { source: TreeSource; trees: Tree[] };
 
 export function getTreeSource(): TreeSource {
   return data.source;
+}
+
+/** 位置が分かっている立木。地図に出せる */
+export type PositionedTree = Tree & { latitude: number; longitude: number };
+
+export function isPositioned(tree: Tree): tree is PositionedTree {
+  return tree.latitude !== null && tree.longitude !== null;
 }
 
 export function getTrees(): Tree[] {
@@ -61,11 +72,11 @@ function treesOf(scene: Scene): Tree[] {
     .filter((t): t is Tree => t !== undefined);
 }
 
-/** 立木が分かっているシーンだけを、地図に置ける形にして返す */
+/** 位置の分かっている立木があるシーンだけを、地図に置ける形にして返す */
 export function getSceneTrees(): SceneTrees[] {
   return getScenes()
     .map((scene) => {
-      const trees = treesOf(scene);
+      const trees = treesOf(scene).filter(isPositioned);
       if (trees.length === 0) return null;
       return {
         scene,
@@ -86,7 +97,7 @@ export function getSceneTreesFor(scene: Scene): SceneTrees | undefined {
 export interface TreeWithScene {
   tree: Tree;
   scene: Scene;
-  /** 同じ株から出ている他の幹 */
+  /** 同じ撮影に入っている他の木 */
   siblings: Tree[];
 }
 
@@ -125,20 +136,29 @@ export interface TreeRow {
   diameter: number | null;
   height: number | null;
   volume: number | null;
-  latitude: number;
-  longitude: number;
+  /** 位置未登録なら null */
+  latitude: number | null;
+  longitude: number | null;
   positionEstimated: boolean;
   scene: Scene;
-  /** 同じ株から出ていて、この行には含まれない幹 */
+  /**
+   * 同じ撮影に入っていて、この行には含まれない木。
+   * 萌芽更新した株の別の幹のこともあれば (687 と 688)、
+   * 単に近くに立っていて 1 回で撮れただけのこともある (596 と 599)。
+   */
   siblingIds: string[];
 }
 
 export function getTreeRows(): TreeRow[] {
   const rows: TreeRow[] = [];
 
-  for (const entry of getSceneTrees()) {
-    const measured = entry.trees.filter((t) => t.diameter !== null);
-    const unmeasured = entry.trees.filter((t) => t.diameter === null);
+  // 一覧は地図と違って位置が無い立木も出す。番号と直径だけでも意味がある
+  for (const scene of getScenes()) {
+    const all = treesOf(scene);
+    if (all.length === 0) continue;
+    const entry = { scene, trees: all };
+    const measured = all.filter((t) => t.diameter !== null);
+    const unmeasured = all.filter((t) => t.diameter === null);
 
     const make = (trees: Tree[]): TreeRow => ({
       key: `${entry.scene.id}:${trees.map((t) => t.id).join("-")}`,
@@ -168,10 +188,11 @@ export function getScenesWithoutTrees(): Scene[] {
   return getScenes().filter((s) => treesOf(s).length === 0);
 }
 
-/** 全立木が入る範囲。地図の初期表示に使う */
+/** 位置の分かっている立木が入る範囲。地図の初期表示に使う */
 export function getBounds(): [[number, number], [number, number]] {
-  const lats = data.trees.map((t) => t.latitude);
-  const lngs = data.trees.map((t) => t.longitude);
+  const positioned = data.trees.filter(isPositioned);
+  const lats = positioned.map((t) => t.latitude);
+  const lngs = positioned.map((t) => t.longitude);
   return [
     [Math.min(...lngs), Math.min(...lats)],
     [Math.max(...lngs), Math.max(...lats)],
