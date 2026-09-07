@@ -17,3 +17,6 @@ next-env.d.ts
 
 # uv が作る Python 環境
 scripts/denoise/.venv/
+
+# ビルド時に node_modules から配置する
+/public/maplibre/

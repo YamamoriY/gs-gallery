@@ -24,8 +24,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # ビューア本体はリポジトリに入れず、ビルド時に生成する
-      - run: npm run viewer
+      # ビューア本体と MapLibre のワーカーはリポジトリに入れず、
+      # prebuild (npm run vendor) がビルド前に node_modules から配置する
       - run: npm run build
         env:
           # https://<user>.github.io/<repo>/ に置かれるのでリポジトリ名を前置する

@@ -22,12 +22,29 @@ export default function RootLayout({
             <span className="text-sm text-paper-dim">
               3D Gaussian Splatting アーカイブ
             </span>
+            <nav className="ml-auto flex gap-4 text-sm">
+              <Link href="/" className="text-paper-dim hover:text-paper">
+                一覧
+              </Link>
+              <Link href="/map/" className="text-paper-dim hover:text-paper">
+                地図
+              </Link>
+            </nav>
           </div>
         </header>
         {children}
         <footer className="mt-16 border-t border-white/10">
           <div className="mx-auto max-w-6xl px-6 py-8 text-xs text-paper-dim">
-            ビューアは{" "}
+            地図は{" "}
+            <a
+              className="underline hover:text-paper"
+              href="https://maps.gsi.go.jp/development/ichiran.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              国土地理院タイル
+            </a>
+            、ビューアは{" "}
             <a
               className="underline hover:text-paper"
               href="https://github.com/playcanvas/supersplat-viewer"

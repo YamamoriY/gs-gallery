@@ -4,17 +4,21 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "npm run vendor",
     "dev": "next dev",
+    "prebuild": "npm run vendor",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "vendor": "node scripts/build-viewer.mjs && node scripts/vendor-maplibre.mjs",
+    "viewer": "node scripts/build-viewer.mjs",
     "scan": "node scripts/scan.mjs",
     "thumbs": "node scripts/thumbs.mjs",
     "convert": "node scripts/convert.mjs",
-    "viewer": "node scripts/build-viewer.mjs",
     "prepare-data": "npm run convert && npm run thumbs && npm run scan"
   },
   "dependencies": {
+    "maplibre-gl": "^6.7.0",
     "next": "^16.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0"

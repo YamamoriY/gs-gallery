@@ -17,11 +17,15 @@ export interface SceneConverted {
   gaussians: number | null;
 }
 
-/** 将来の地図連携用。overrides に書くと地図にピンが立つ */
-export interface SceneLocation {
-  latitude: number;
-  longitude: number;
-}
+/**
+ * 現地の測定地点への参照。data/survey-points.json の id を指す。
+ *
+ * 緯度経度をシーンに直接持たせていないのは、萌芽更新した株では
+ * 1 つの株から出た複数の幹をそれぞれ別番号で撮っていて、
+ * 同じ座標に複数のシーンが対応するため。地点を実体にしておくと、
+ * 直径などの測定値も 1 か所で持てる。
+ */
+export type ScenePointId = string;
 
 export interface Scene {
   id: string;
@@ -37,7 +41,7 @@ export interface Scene {
   imageCount: number | null;
   source: SceneSource;
   converted: SceneConverted | null;
-  location: SceneLocation | null;
+  pointId: ScenePointId | null;
   thumbnail: string | null;
   hidden: boolean;
 }

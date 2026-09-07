@@ -151,8 +151,8 @@ function main() {
         shDegree,
       },
       converted,
-      // 将来の地図連携用。overrides に {lat, lng} を書けば地図に出せる
-      location: overrides[id]?.location ?? null,
+      // data/survey-points.json の地点 id。書くと地図にピンが立つ
+      pointId: overrides[id]?.pointId ?? null,
       thumbnail: overrides[id]?.thumbnail ?? findThumb(id),
       hidden: overrides[id]?.hidden ?? false,
     };

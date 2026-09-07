@@ -1,0 +1,101 @@
+{
+  "_comment": "現地で測った木の位置。Google マップの共有リスト「ミズナラ_直径測定」(石川哲平) から取った。シーンはこの id を scenes.overrides.json の pointId で参照する。萌芽更新した株は幹ごとに番号が振られるので、1 地点に複数のシーンがぶら下がることがある。",
+  "source": {
+    "name": "ミズナラ_直径測定",
+    "author": "石川哲平",
+    "url": "https://maps.app.goo.gl/t81z6sRFHiDnW4gZ6",
+    "retrieved": "2026-09-06"
+  },
+  "points": [
+    {
+      "id": "p01",
+      "latitude": 42.106503,
+      "longitude": 140.681292,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": ""
+    },
+    {
+      "id": "p02",
+      "latitude": 42.106406,
+      "longitude": 140.682089,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": ""
+    },
+    {
+      "id": "p03",
+      "latitude": 42.106478,
+      "longitude": 140.682161,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": ""
+    },
+    {
+      "id": "p04",
+      "latitude": 42.106697,
+      "longitude": 140.682175,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": ""
+    },
+    {
+      "id": "p05",
+      "latitude": 42.10685,
+      "longitude": 140.682042,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": ""
+    },
+    {
+      "id": "p06",
+      "latitude": 42.106792,
+      "longitude": 140.681311,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": "p07 と約 2m しか離れていない。萌芽更新した同一株の別の幹かもしれない"
+    },
+    {
+      "id": "p07",
+      "latitude": 42.106778,
+      "longitude": 140.681333,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": "共有リストでは度分秒表記 (42°06'24.4\"N 140°40'52.8\"E)。p06 と約 2m しか離れていない"
+    },
+    {
+      "id": "p08",
+      "latitude": 42.107242,
+      "longitude": 140.681253,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": ""
+    },
+    {
+      "id": "p09",
+      "latitude": 42.107236,
+      "longitude": 140.681175,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": ""
+    },
+    {
+      "id": "p10",
+      "latitude": 42.106492,
+      "longitude": 140.682328,
+      "species": "ミズナラ",
+      "diameter": null,
+      "height": null,
+      "note": ""
+    }
+  ]
+}

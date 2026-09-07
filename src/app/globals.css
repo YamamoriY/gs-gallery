@@ -19,3 +19,49 @@ body {
   font-family: ui-sans-serif, system-ui, "Hiragino Sans", "Noto Sans JP",
     sans-serif;
 }
+
+/* 地図のピン。番号を出して、シーンが結び付いているかを色で分ける */
+.survey-pin {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #0d1108;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.15s ease;
+}
+.survey-pin[data-state="placed"] {
+  background: #8fbf5a;
+}
+/* シーンがまだ無い地点は、割り当て漏れと分かるように色を変える */
+.survey-pin[data-state="empty"] {
+  background: #e8c15c;
+}
+.survey-pin[data-selected="true"] {
+  transform: scale(1.35);
+  border-color: #fff;
+  box-shadow: 0 0 0 4px rgba(143, 191, 90, 0.35), 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+.survey-pin:hover {
+  transform: scale(1.2);
+}
+
+/* MapLibre の既定は明るい前提なので、暗い画面に合わせる */
+.maplibregl-ctrl-attrib {
+  background: rgba(13, 17, 8, 0.75) !important;
+  color: #cfd6c4;
+}
+.maplibregl-ctrl-attrib a {
+  color: #cfd6c4;
+}
+.maplibregl-ctrl-scale {
+  background: rgba(13, 17, 8, 0.75);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #cfd6c4;
+}

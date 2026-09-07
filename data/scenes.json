@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T12:56:27.659Z",
+  "generatedAt": "2026-09-07T01:00:50.033Z",
   "scenes": [
     {
       "id": "20260831_15tree",
@@ -24,7 +24,7 @@
         "bytes": 12542897,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -51,7 +51,7 @@
         "bytes": 12542897,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -75,7 +75,7 @@
         "bytes": 12692109,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -99,7 +99,7 @@
         "bytes": 12640351,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -123,7 +123,7 @@
         "bytes": 13076495,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -147,7 +147,7 @@
         "bytes": 11919573,
         "gaussians": 914386
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -171,7 +171,7 @@
         "bytes": 13064958,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -195,7 +195,7 @@
         "bytes": 12994512,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -219,7 +219,7 @@
         "bytes": 12966770,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -243,7 +243,7 @@
         "bytes": 13046874,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -267,7 +267,7 @@
         "bytes": 13046874,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -291,7 +291,7 @@
         "bytes": 13240496,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -315,7 +315,7 @@
         "bytes": 12958986,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     },
@@ -339,7 +339,7 @@
         "bytes": 13066659,
         "gaussians": 1000000
       },
-      "location": null,
+      "pointId": null,
       "thumbnail": null,
       "hidden": false
     }
