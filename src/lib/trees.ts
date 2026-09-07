@@ -75,6 +75,35 @@ export function getSceneTreesFor(scene: Scene): SceneTrees | undefined {
   return getSceneTrees().find((e) => e.scene.id === scene.id);
 }
 
+/** 立木 1 本と、それが写っているシーン */
+export interface TreeWithScene {
+  tree: Tree;
+  scene: Scene;
+  /** 同じ株から出ている他の幹 */
+  siblings: Tree[];
+}
+
+/**
+ * 立木を 1 本ずつ並べる。一覧はこちらを使う。
+ *
+ * シーン単位ではなく立木単位にしているのは、伐採する対象が幹だから。
+ * 萌芽更新した株は 1 シーンに複数の幹が入っているので、
+ * シーンを並べると幹の数と合わない。
+ */
+export function getTreesWithScene(): TreeWithScene[] {
+  const out: TreeWithScene[] = [];
+  for (const entry of getSceneTrees()) {
+    for (const tree of entry.trees) {
+      out.push({
+        tree,
+        scene: entry.scene,
+        siblings: entry.trees.filter((t) => t.id !== tree.id),
+      });
+    }
+  }
+  return out;
+}
+
 /** まだ立木が結び付いていないシーン */
 export function getScenesWithoutTrees(): Scene[] {
   return getScenes().filter((s) => treesOf(s).length === 0);

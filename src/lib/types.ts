@@ -55,7 +55,6 @@ export interface Scene {
   source: SceneSource;
   converted: SceneConverted | null;
   treeIds: TreeId[];
-  thumbnail: string | null;
   hidden: boolean;
 }
 

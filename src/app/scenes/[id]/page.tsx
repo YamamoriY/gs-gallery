@@ -74,7 +74,7 @@ export default async function ScenePage({
   return (
     <main className="mx-auto max-w-6xl px-6 py-8">
       <Link href="/" className="text-sm text-paper-dim hover:text-paper">
-        ← 一覧へ
+        ← 立木一覧へ
       </Link>
 
       <div className="mt-4 mb-6">

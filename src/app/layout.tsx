@@ -24,7 +24,7 @@ export default function RootLayout({
             </span>
             <nav className="ml-auto flex gap-4 text-sm">
               <Link href="/" className="text-paper-dim hover:text-paper">
-                一覧
+                立木一覧
               </Link>
               <Link href="/map/" className="text-paper-dim hover:text-paper">
                 地図

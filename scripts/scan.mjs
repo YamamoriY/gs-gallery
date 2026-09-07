@@ -17,7 +17,6 @@ import {
   OVERRIDES_JSON,
   SCALE_JSON,
   GS_DIR,
-  PUBLIC_DIR,
 } from "./config.mjs";
 import {
   findProject,
@@ -115,12 +114,6 @@ function statsOf(sogPath) {
   }
 }
 
-/** scripts/thumbs.mjs が作ったカード画像を拾う */
-function findThumb(id) {
-  const rel = `thumbs/${id}.webp`;
-  return fs.existsSync(path.join(PUBLIC_DIR, rel)) ? rel : null;
-}
-
 function loadJson(file, fallback) {
   if (!fs.existsSync(file)) return fallback;
   return JSON.parse(fs.readFileSync(file, "utf8"));
@@ -190,7 +183,6 @@ function main() {
       converted,
       // data/trees.json の立木番号。既定はファイル名から決まる
       treeIds: overrides[id]?.trees ?? treeIdsFromSlug(slug),
-      thumbnail: overrides[id]?.thumbnail ?? findThumb(id),
       hidden: overrides[id]?.hidden ?? false,
     };
   });

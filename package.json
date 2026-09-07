@@ -13,7 +13,6 @@
     "vendor": "node scripts/build-viewer.mjs && node scripts/vendor-maplibre.mjs",
     "viewer": "node scripts/build-viewer.mjs",
     "scan": "node scripts/scan.mjs",
-    "thumbs": "node scripts/thumbs.mjs",
     "convert": "node scripts/convert.mjs",
     "scale": "node scripts/measure-scale.mjs",
     "prepare-data": "npm run convert && npm run scale && npm run scan"
@@ -33,7 +32,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^16",
-    "sharp": "^0.35.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

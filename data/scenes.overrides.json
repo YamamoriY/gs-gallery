@@ -1,5 +1,5 @@
 {
-  "_comment": "手で書くメタ情報。scripts/scan.mjs がここを scenes.json にマージするので、scan を回し直しても消えません。使えるキー: title, description, tags, capturedAt, imageCount, sourceProject, pointId, thumbnail, thumbnailSource, hidden, denoise",
+  "_comment": "手で書くメタ情報。scripts/scan.mjs がここを scenes.json にマージするので、scan を回し直しても消えません。使えるキー: title, description, tags, capturedAt, imageCount, sourceProject, pointId, hidden, denoise",
   "20260831_15tree": {
     "hidden": true,
     "description": "15 本の樹 (Osmo)。ミズナラ直径測定の対象ではないので一旦アーカイブから外している"
@@ -7,8 +7,7 @@
   "20260831_596-599": {
     "hidden": true,
     "description": "8 眼リグのフレーム 596-599 のみで学習。一旦アーカイブから外している",
-    "sourceProject": "archive/2026-08-31_15tree_osmo_rigfocal",
-    "thumbnailSource": "00_0831_15tree_00597.jpg"
+    "sourceProject": "archive/2026-08-31_15tree_osmo_rigfocal"
   },
   "20260831_single01": {
     "hidden": true,
