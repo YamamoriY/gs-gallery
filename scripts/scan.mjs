@@ -10,6 +10,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
+import crypto from "node:crypto";
 import {
   SOURCE_DIR,
   DATA_DIR,
@@ -102,16 +103,83 @@ function statsOf(sogPath) {
     const parsed = JSON.parse(out);
     const lod = parsed.stats[0];
     const axes = ["x", "y", "z"].map((n) => lod.columns.indexOf(n));
-    const size = axes.map(
-      (i) => lod.data.max[i] - lod.data.min[i],
-    );
+    const round = (v) => Math.round(v * 1000) / 1000;
     return {
       gaussians: parsed.numGaussians ?? null,
-      size: size.map((v) => Math.round(v * 1000) / 1000),
+      size: axes.map((i) => round(lod.data.max[i] - lod.data.min[i])),
+      // 取り違えの検出に使う。別々の撮影なら座標系が無関係になるので、
+      // 中央値が近い 2 シーンは同じ場所を撮っている疑いがある
+      centre: axes.map((i) => round(lod.data.median[i])),
     };
   } catch {
     return { gaussians: null, size: null };
   }
+}
+
+/**
+ * 元 PLY の指紋。サイズと数か所のブロックだけ見る。
+ * 1.2GB を全部読むと遅いので、取り違えが分かれば十分と割り切る。
+ */
+function fingerprint(file) {
+  const size = fs.statSync(file).size;
+  const hash = crypto.createHash("sha256").update(String(size));
+  const fd = fs.openSync(file, "r");
+  const buf = Buffer.alloc(65536);
+  try {
+    for (const at of [0, 0.2, 0.33, 0.5, 0.66, 0.8]) {
+      const read = fs.readSync(fd, buf, 0, buf.length, Math.floor(size * at));
+      hash.update(buf.subarray(0, read));
+    }
+  } finally {
+    fs.closeSync(fd);
+  }
+  return hash.digest("hex").slice(0, 16);
+}
+
+/**
+ * 取り違えを探す。
+ *
+ * 20260902_693 は 2 回続けて別の木のデータになっていた。1 回目は 692 と
+ * PLY が完全に同一、2 回目はファイルは違うのに 696 と同じ場所の再構成
+ * だった (成果物は立木番号に振り直したが projects/ は撮影時の名前のままで、
+ * 693 が両方に存在するため)。どちらも気付きにくいので機械的に見る。
+ */
+function findCollisions(scenes) {
+  const warnings = [];
+
+  const byPrint = new Map();
+  for (const s of scenes) {
+    const list = byPrint.get(s.source.fingerprint) ?? [];
+    list.push(s.id);
+    byPrint.set(s.source.fingerprint, list);
+  }
+  for (const [, ids] of byPrint) {
+    if (ids.length > 1) {
+      warnings.push(`元 PLY が同一: ${ids.join(", ")}`);
+    }
+  }
+
+  // 座標系が一致するシーン。中央値が近く、広がりも同程度なら同じ場所
+  const placed = scenes.filter((s) => s.converted?.centre);
+  for (let i = 0; i < placed.length; i += 1) {
+    for (let j = i + 1; j < placed.length; j += 1) {
+      const a = placed[i];
+      const b = placed[j];
+      const gap = Math.hypot(
+        ...a.converted.centre.map((v, k) => v - b.converted.centre[k]),
+      );
+      const span = Math.max(...a.converted.size);
+      if (gap > span * 0.05) continue;
+      // 同じ場所を撮っていても学習ごとに広がりは変わるので緩めに見る
+      const ratio = Math.max(...a.converted.size) / Math.max(...b.converted.size);
+      if (ratio < 0.7 || ratio > 1.4) continue;
+      warnings.push(
+        `同じ場所の再構成に見える: ${a.id} と ${b.id} ` +
+          `(中央値の差 ${gap.toFixed(2)} / 広がり ${span.toFixed(1)})`,
+      );
+    }
+  }
+  return warnings;
 }
 
 function loadJson(file, fallback) {
@@ -154,7 +222,7 @@ function main() {
       // 点数を数えるのは遅いので、ファイルが変わっていなければ使い回す。
       // 点数を持っていない古いカタログからは数え直す。
       converted =
-        converted?.bytes === bytes && converted.size != null
+        converted?.bytes === bytes && converted.centre != null
           ? converted
           : { file: `gs/${id}.sog`, bytes, ...statsOf(sog) };
     }
@@ -179,6 +247,7 @@ function main() {
         bytes: stat.size,
         gaussians: vertexCount,
         shDegree,
+        fingerprint: fingerprint(full),
       },
       converted,
       // data/trees.json の立木番号。既定はファイル名から決まる
@@ -199,6 +268,15 @@ function main() {
   const missing = scenes.filter((s) => !s.converted);
   if (missing.length) {
     console.log(`未変換 ${missing.length} 件: node scripts/convert.mjs で変換できます`);
+  }
+
+  const collisions = findCollisions(scenes);
+  if (collisions.length) {
+    console.log("");
+    console.log("取り違えの疑い:");
+    for (const w of collisions) console.log(`  ${w}`);
+    console.log("  scenes.overrides.json の warning に書いてサイトに出すか、");
+    console.log("  正しい元データで学習し直してください");
   }
 }
 

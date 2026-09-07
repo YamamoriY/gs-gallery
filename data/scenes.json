@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T06:05:49.450Z",
+  "generatedAt": "2026-09-07T06:38:12.320Z",
   "scenes": [
     {
       "id": "20260831_15tree",
@@ -16,7 +16,8 @@
         "file": "20260831_15tree.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "2de1b2dc7e624b66"
       },
       "converted": null,
       "treeIds": [],
@@ -40,7 +41,8 @@
         "file": "20260831_596-599.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "d3467bb0f61b96fe"
       },
       "converted": {
         "file": "gs/20260831_596-599.sog",
@@ -50,6 +52,11 @@
           29.999,
           21.561,
           24.992
+        ],
+        "centre": [
+          3.97,
+          2.338,
+          3.302
         ]
       },
       "treeIds": [
@@ -73,7 +80,8 @@
         "file": "20260831_single01.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "4a22104596061671"
       },
       "converted": null,
       "treeIds": [],
@@ -94,7 +102,8 @@
         "file": "20260902_684.ply",
         "bytes": 1176574044,
         "gaussians": 4744244,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "4eb2bf15e71f59a8"
       },
       "converted": {
         "file": "gs/20260902_684.sog",
@@ -104,6 +113,11 @@
           18.497,
           16.522,
           19
+        ],
+        "centre": [
+          -1.91,
+          1.567,
+          -2.743
         ]
       },
       "treeIds": [
@@ -126,7 +140,8 @@
         "file": "20260902_685.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "d4e5997fe9c0a2aa"
       },
       "converted": {
         "file": "gs/20260902_685.sog",
@@ -136,6 +151,11 @@
           18.999,
           13.836,
           18.5
+        ],
+        "centre": [
+          0.998,
+          -0.067,
+          5.276
         ]
       },
       "treeIds": [
@@ -158,7 +178,8 @@
         "file": "20260902_686.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "7f78ff431037e12a"
       },
       "converted": {
         "file": "gs/20260902_686.sog",
@@ -168,6 +189,11 @@
           33.997,
           28.31,
           38.487
+        ],
+        "centre": [
+          -6.429,
+          -0.682,
+          -0.34
         ]
       },
       "treeIds": [
@@ -190,7 +216,8 @@
         "file": "20260902_687-688.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "ce473ac98ba66cb8"
       },
       "converted": {
         "file": "gs/20260902_687-688.sog",
@@ -200,6 +227,11 @@
           42.965,
           42.07,
           46.495
+        ],
+        "centre": [
+          -12.493,
+          3.664,
+          -2.27
         ]
       },
       "treeIds": [
@@ -223,7 +255,8 @@
         "file": "20260902_689-691.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "20d7c40948f8b3a1"
       },
       "converted": {
         "file": "gs/20260902_689-691.sog",
@@ -233,6 +266,11 @@
           39.996,
           36.955,
           36.494
+        ],
+        "centre": [
+          2.472,
+          7.483,
+          0.718
         ]
       },
       "treeIds": [
@@ -257,7 +295,8 @@
         "file": "20260902_692.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "973524e7de156777"
       },
       "converted": {
         "file": "gs/20260902_692.sog",
@@ -267,6 +306,11 @@
           23.495,
           15.895,
           18.5
+        ],
+        "centre": [
+          -0.683,
+          1.681,
+          -3.078
         ]
       },
       "treeIds": [
@@ -277,8 +321,8 @@
     {
       "id": "20260902_693",
       "title": "693",
-      "description": "693 は 2026-09-07 に学習をやり直したもの。",
-      "warning": null,
+      "description": "2026-09-07 に学習をやり直したが、元データを取り違えている疑いがある。",
+      "warning": "この 3D は立木 693 ではなく 696 を撮ったものの可能性が高い。座標系とヘリポートの検出位置が 20260902_696 と一致する。正しい元データは projects/2026-09-02_690。現地の判断に使わないこと。",
       "metresPerUnit": 0.3262,
       "tags": [],
       "capturedAt": "2026-09-02",
@@ -289,7 +333,8 @@
         "file": "20260902_693.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "df78bf19b6d88816"
       },
       "converted": {
         "file": "gs/20260902_693.sog",
@@ -299,6 +344,11 @@
           46.997,
           37.2,
           45.997
+        ],
+        "centre": [
+          -5.152,
+          1.248,
+          0.952
         ]
       },
       "treeIds": [
@@ -321,7 +371,8 @@
         "file": "20260902_694.ply",
         "bytes": 1009290852,
         "gaussians": 4069715,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "1e22ae7c0698cddf"
       },
       "converted": {
         "file": "gs/20260902_694.sog",
@@ -331,6 +382,11 @@
           45.988,
           41.951,
           45.494
+        ],
+        "centre": [
+          -2.684,
+          5.579,
+          -0.85
         ]
       },
       "treeIds": [
@@ -353,7 +409,8 @@
         "file": "20260902_695.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "07332fed40bf5b8e"
       },
       "converted": {
         "file": "gs/20260902_695.sog",
@@ -363,6 +420,11 @@
           19.991,
           20.462,
           19.997
+        ],
+        "centre": [
+          -1.608,
+          5.009,
+          0.743
         ]
       },
       "treeIds": [
@@ -385,7 +447,8 @@
         "file": "20260902_696.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
-        "shDegree": 3
+        "shDegree": 3,
+        "fingerprint": "a48354538cbba64a"
       },
       "converted": {
         "file": "gs/20260902_696.sog",
@@ -395,6 +458,11 @@
           52.997,
           38.887,
           46.995
+        ],
+        "centre": [
+          -4.984,
+          1.172,
+          0.928
         ]
       },
       "treeIds": [

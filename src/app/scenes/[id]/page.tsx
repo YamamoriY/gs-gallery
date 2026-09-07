@@ -135,6 +135,14 @@ export default async function ScenePage({
               </li>
             ))}
           </ul>
+          {placed.trees.length > 1 && (
+            <p className="mt-3 text-xs leading-relaxed text-amber-700">
+              この撮影には {placed.trees.length} 本の幹が入っています。
+              3D の中でどれがどの番号かを示す情報はまだありません。
+              現地では立木番号のタグで確認してください。
+            </p>
+          )}
+
           <div className="mt-3 text-xs">
             <Link className="underline hover:text-paper" href="/map/">
               地図で見る
