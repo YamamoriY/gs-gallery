@@ -1,6 +1,6 @@
 {
   "_comment": "scripts/measure-scale.mjs が書き出す。橙色のヘリポート (一辺 50cm) を物差しにして測った 1 ユニットあたりのメートル数。手で決めたい場合は scenes.overrides.json の metresPerUnit が優先される。 見つからないシーンは found: false のままにしてある。カメラの地上高を物差しにする方法も試したが、下草や落葉を地面と誤認してばらつきが中央値と同程度になり、使えなかった。",
-  "generatedAt": "2026-09-07T02:44:49.194Z",
+  "generatedAt": "2026-09-07T03:22:07.228Z",
   "markerSideMetres": 0.5,
   "scenes": {
     "20260902_684": {
@@ -82,19 +82,19 @@
     "20260902_693": {
       "found": true,
       "reason": null,
-      "points": 990,
+      "points": 3398,
       "size": [
-        0.909,
-        0.805
+        1.559,
+        1.519
       ],
-      "squareness": 0.885,
-      "flatness": 0.223,
+      "squareness": 0.974,
+      "flatness": 0.184,
       "centre": [
-        7.28,
-        4.099,
-        -1.293
+        -2.664,
+        6.081,
+        1.063
       ],
-      "metresPerUnit": 0.5835
+      "metresPerUnit": 0.3249
     },
     "20260902_694": {
       "found": false,
