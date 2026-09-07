@@ -117,9 +117,6 @@ export function TreeTable({ rows }: { rows: TreeRow[] }) {
                 <span className="font-mono text-xs text-paper-dim">
                   {formatLatLng(r.latitude, r.longitude)}
                 </span>
-                {r.positionEstimated && (
-                  <span className="ml-2 text-xs text-amber-700">推定</span>
-                )}
                 <a
                   href={directionsUrl(r.latitude, r.longitude)}
                   target="_blank"

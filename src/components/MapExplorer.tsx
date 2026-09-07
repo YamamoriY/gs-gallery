@@ -110,12 +110,6 @@ export function MapExplorer({ entries, bounds, without, source }: Props) {
                   {formatDms(e.latitude, e.longitude)}
                 </div>
 
-                {e.estimated && (
-                  <p className="mt-2 text-xs leading-relaxed text-amber-700">
-                    位置は実測ではなく推定です。
-                    {e.trees.find((t) => t.positionEstimated)?.note}
-                  </p>
-                )}
               </div>
             </li>
           ))}

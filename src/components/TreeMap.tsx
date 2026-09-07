@@ -124,7 +124,6 @@ export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
       const el = document.createElement("button");
       el.type = "button";
       el.className = "tree-pin";
-      el.dataset.estimated = String(entry.estimated);
       el.textContent = entry.scene.title;
       el.title =
         entry.trees

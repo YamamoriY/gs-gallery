@@ -140,12 +140,6 @@ export default async function ScenePage({
               地図で見る
             </Link>
           </div>
-          {placed.estimated && (
-            <p className="mt-2 text-xs leading-relaxed text-amber-700">
-              位置は実測ではなく推定です。
-              {placed.trees.find((t) => t.positionEstimated)?.note}
-            </p>
-          )}
         </div>
       ) : (
         <p className="mt-6 text-xs text-amber-700">

@@ -15,7 +15,10 @@ export interface Tree {
   volume: number | null;
   latitude: number;
   longitude: number;
-  /** 実測ではなく他の木から推定した位置か */
+  /**
+   * 実測ではなく他の木から推定した位置か。
+   * 由来の記録として持っているだけで、画面には出していない。
+   */
   positionEstimated: boolean;
   note: string;
 }
