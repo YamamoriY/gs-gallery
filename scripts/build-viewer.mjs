@@ -31,9 +31,14 @@ const outDir = path.join(PUBLIC_DIR, "viewer");
 
 fs.mkdirSync(outDir, { recursive: true });
 
-// index.html は renderViewerHtml() から。引数なしだと同梱の文書がそのまま返り、
-// 配信ページ側の URL パラメータが content などを上書きする。
-const html = await renderViewerHtml();
+// ビューアの背景色。サイトが明るい配色なので白で揃える。
+// 0..1 で指定する (settings の background.color と同じ形式)。
+const BACKGROUND = [1, 1, 1];
+
+// index.html は renderViewerHtml() から。
+// backgroundColor は最初のフレームが出る前の下地に使われる。
+// 渡さないと黒地から白へ切り替わって一瞬ちらつく。
+const html = await renderViewerHtml({ backgroundColor: BACKGROUND });
 fs.writeFileSync(path.join(outDir, "index.html"), html);
 
 // エンジン本体とスタイル。source map は 6.6MB あるので持っていかない
@@ -43,8 +48,10 @@ for (const name of ["index.js", "index.css"]) {
 
 // ビューアは起動時に ./settings.json を取りにいく。
 // 無いと JSON の解析で落ちて真っ黒のままになるので必ず置く。
-// 森の中に入って見るシーンなので environment で構える。
-const settings = defaultSettings("environment");
+// 1 本の木を外から撮ったシーンなので object で構える。
+// environment だと空間の中に入った視点になり、株全体が画面に入らない。
+const settings = defaultSettings("object");
+settings.background.color = BACKGROUND;
 validateSettings(settings, { limits: true });
 fs.writeFileSync(
   path.join(outDir, "settings.json"),

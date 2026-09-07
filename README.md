@@ -47,6 +47,18 @@ npm run dev
 `convert` は [uv](https://docs.astral.sh/uv/) を使う。社内 CA などで証明書が
 差し替えられている環境向けに `UV_SYSTEM_CERTS=1` を自動で立てている。
 
+## ビューアの見え方
+
+`scripts/build-viewer.mjs` が `public/viewer/settings.json` を作る。
+ここを変えると全シーンの見え方が変わる。
+
+- **背景は白** (`background.color = [1,1,1]`)。サイトが明るい配色なのと、
+  幹の形が黒背景より読み取りやすいため。`renderViewerHtml` にも同じ色を
+  渡している。渡さないと最初のフレームが出るまで黒地でちらつく。
+- **カメラは `defaultSettings("object")`**。1 本の木を外から撮ったシーンなので、
+  対象を画面に収める構えになる。`"environment"` (空間の中から見る) だと
+  株全体が入らず、`20260831_596-599` はほぼ真っ白な画面になっていた。
+
 ## ノイズ除去
 
 3DGS の出力には 2 種類のノイズが混ざっている。どちらも別の対処が要る。
