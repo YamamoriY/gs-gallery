@@ -5,6 +5,7 @@
  *   node scripts/convert.mjs 20260902_693    シーンを指定
  *   node scripts/convert.mjs --force         変換済みも作り直す
  *   node scripts/convert.mjs --preset high   品質プリセットを変える
+ *   node scripts/convert.mjs --decimate 2000000  点数だけ変える
  *   node scripts/convert.mjs --keep-ply      中間の PLY を .cache に残す
  *
  * 二段構え。
@@ -42,9 +43,15 @@ const presetName = (() => {
   const i = args.indexOf("--preset");
   return i === -1 ? DEFAULT_PRESET : args[i + 1];
 })();
+// プリセットを変えると SH や不透明度も動くので、点数だけ試したいとき用
+const decimateOverride = (() => {
+  const i = args.indexOf("--decimate");
+  return i === -1 ? null : Number(args[i + 1]);
+})();
 const targets = args.filter((a, i) => {
   if (a.startsWith("--")) return false;
   if (args[i - 1] === "--preset") return false;
+  if (args[i - 1] === "--decimate") return false;
   return true;
 });
 
@@ -196,7 +203,7 @@ async function convert(id) {
     source,
     ...pre,
     "-H", String(preset.harmonics),
-    "-d", String(preset.decimate),
+    "-d", String(decimateOverride ?? preset.decimate),
     decimated,
   ]);
 
@@ -242,7 +249,9 @@ async function main() {
   }
 
   console.log(
-    `プリセット ${presetName}: ${preset.decimate.toLocaleString()}点 / SH${preset.harmonics}`,
+    `プリセット ${presetName}: ` +
+      `${(decimateOverride ?? preset.decimate).toLocaleString()}点 / SH${preset.harmonics}` +
+      (decimateOverride ? " (点数を指定)" : ""),
   );
   console.log(`${list.length} シーンを変換します\n`);
 

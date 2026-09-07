@@ -93,7 +93,7 @@ export default async function ScenePage({
 
       <SceneViewer
         scene={scene}
-        className="aspect-video w-full rounded-lg border border-line bg-[#1a1c1a]"
+        className="aspect-video w-full rounded-lg border border-line bg-white"
       />
 
       <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-xs text-paper-dim">
