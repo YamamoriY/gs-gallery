@@ -31,3 +31,19 @@ export function formatCount(n: number): string {
   if (n >= 1e3) return `${(n / 1e3).toFixed(0)}K`;
   return String(n);
 }
+
+/**
+ * シーンの広がりを実寸で返す。スケールが測れていなければ null。
+ *
+ * 360 度カメラを地上で回しているので樹冠までは写っておらず、
+ * ここに出る高さは実際の樹高より小さい。
+ */
+export function sceneSizeMetres(scene: Scene): [number, number, number] | null {
+  const size = scene.converted?.size;
+  if (!size || !scene.metresPerUnit) return null;
+  return size.map((v) => v * scene.metresPerUnit!) as [number, number, number];
+}
+
+export function formatSize(size: [number, number, number]): string {
+  return size.map((v) => v.toFixed(1)).join(" × ") + " m";
+}

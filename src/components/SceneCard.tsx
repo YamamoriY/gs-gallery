@@ -6,7 +6,7 @@ export function SceneCard({ scene }: { scene: Scene }) {
   return (
     <Link
       href={`/scenes/${scene.id}/`}
-      className="group block overflow-hidden rounded-lg border border-white/10 bg-bark-soft transition hover:border-moss/60"
+      className="group block overflow-hidden rounded-lg border border-line bg-bark-soft transition hover:border-moss/60"
     >
       <div className="aspect-video overflow-hidden bg-black/40">
         {scene.thumbnail ? (

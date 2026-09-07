@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className="min-h-screen antialiased">
-        <header className="border-b border-white/10">
+        <header className="border-b border-line">
           <div className="mx-auto flex max-w-6xl items-baseline gap-4 px-6 py-5">
             <Link href="/" className="text-lg font-semibold tracking-tight">
               data<span className="text-moss">_</span>mori
@@ -33,7 +33,7 @@ export default function RootLayout({
           </div>
         </header>
         {children}
-        <footer className="mt-16 border-t border-white/10">
+        <footer className="mt-16 border-t border-line">
           <div className="mx-auto max-w-6xl px-6 py-8 text-xs text-paper-dim">
             地図は{" "}
             <a

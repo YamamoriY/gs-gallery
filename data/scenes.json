@@ -1,10 +1,12 @@
 {
-  "generatedAt": "2026-09-07T01:58:43.557Z",
+  "generatedAt": "2026-09-07T02:27:13.277Z",
   "scenes": [
     {
       "id": "20260831_15tree",
       "title": "15tree",
       "description": "15 本の樹 (Osmo)。ミズナラ直径測定の対象ではないので一旦アーカイブから外している",
+      "warning": null,
+      "metresPerUnit": null,
       "tags": [],
       "capturedAt": "2026-08-31",
       "trainedAt": "2026-09-02",
@@ -25,6 +27,8 @@
       "id": "20260831_596-599",
       "title": "596-599",
       "description": "8 眼リグのフレーム 596-599 のみで学習。一旦アーカイブから外している",
+      "warning": null,
+      "metresPerUnit": null,
       "tags": [],
       "capturedAt": "2026-08-31",
       "trainedAt": "2026-09-02",
@@ -50,6 +54,8 @@
       "id": "20260831_single01",
       "title": "single01",
       "description": "一旦アーカイブから外している",
+      "warning": null,
+      "metresPerUnit": null,
       "tags": [],
       "capturedAt": "2026-08-31",
       "trainedAt": "2026-09-01",
@@ -70,6 +76,8 @@
       "id": "20260902_684",
       "title": "684",
       "description": "",
+      "warning": null,
+      "metresPerUnit": null,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -84,7 +92,12 @@
       "converted": {
         "file": "gs/20260902_684.sog",
         "bytes": 13076495,
-        "gaussians": 1000000
+        "gaussians": 1000000,
+        "size": [
+          18.5,
+          16.562,
+          18.999
+        ]
       },
       "treeIds": [
         "684"
@@ -96,6 +109,8 @@
       "id": "20260902_685",
       "title": "685",
       "description": "",
+      "warning": null,
+      "metresPerUnit": null,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -110,7 +125,12 @@
       "converted": {
         "file": "gs/20260902_685.sog",
         "bytes": 11919573,
-        "gaussians": 914386
+        "gaussians": 914386,
+        "size": [
+          18.997,
+          13.84,
+          18.5
+        ]
       },
       "treeIds": [
         "685"
@@ -122,6 +142,8 @@
       "id": "20260902_686",
       "title": "686",
       "description": "",
+      "warning": null,
+      "metresPerUnit": 0.3566,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -136,7 +158,12 @@
       "converted": {
         "file": "gs/20260902_686.sog",
         "bytes": 13064958,
-        "gaussians": 1000000
+        "gaussians": 1000000,
+        "size": [
+          33.998,
+          28.216,
+          38.495
+        ]
       },
       "treeIds": [
         "686"
@@ -148,6 +175,8 @@
       "id": "20260902_687-688",
       "title": "687-688",
       "description": "萌芽更新した株。687 と 688 の 2 本の幹が同じ株から出ている。",
+      "warning": null,
+      "metresPerUnit": null,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -162,7 +191,12 @@
       "converted": {
         "file": "gs/20260902_687-688.sog",
         "bytes": 12994512,
-        "gaussians": 1000000
+        "gaussians": 1000000,
+        "size": [
+          42.97,
+          42.076,
+          46.496
+        ]
       },
       "treeIds": [
         "687",
@@ -175,6 +209,8 @@
       "id": "20260902_689-691",
       "title": "689-691",
       "description": "萌芽更新した株。689・690・691 の 3 本の幹が同じ株から出ている。",
+      "warning": null,
+      "metresPerUnit": 0.2962,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -189,7 +225,12 @@
       "converted": {
         "file": "gs/20260902_689-691.sog",
         "bytes": 12966770,
-        "gaussians": 1000000
+        "gaussians": 1000000,
+        "size": [
+          39.999,
+          36.578,
+          36.495
+        ]
       },
       "treeIds": [
         "689",
@@ -203,6 +244,8 @@
       "id": "20260902_692",
       "title": "692",
       "description": "",
+      "warning": "成果物の PLY が 20260902_692 と 20260902_693 で完全に同一。どちらか一方はこの木を撮ったものではない。学習をやり直すまで、この 3D を見て現地の木を判断しないこと。",
+      "metresPerUnit": 0.5835,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -217,7 +260,12 @@
       "converted": {
         "file": "gs/20260902_692.sog",
         "bytes": 13046874,
-        "gaussians": 1000000
+        "gaussians": 1000000,
+        "size": [
+          23.499,
+          15.88,
+          18.498
+        ]
       },
       "treeIds": [
         "692"
@@ -229,6 +277,8 @@
       "id": "20260902_693",
       "title": "693",
       "description": "",
+      "warning": "成果物の PLY が 20260902_692 と 20260902_693 で完全に同一。どちらか一方はこの木を撮ったものではない。学習をやり直すまで、この 3D を見て現地の木を判断しないこと。",
+      "metresPerUnit": 0.5835,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
@@ -243,7 +293,12 @@
       "converted": {
         "file": "gs/20260902_693.sog",
         "bytes": 13046874,
-        "gaussians": 1000000
+        "gaussians": 1000000,
+        "size": [
+          23.499,
+          15.88,
+          18.498
+        ]
       },
       "treeIds": [
         "693"
@@ -255,6 +310,8 @@
       "id": "20260902_694",
       "title": "694",
       "description": "",
+      "warning": null,
+      "metresPerUnit": null,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
@@ -269,7 +326,12 @@
       "converted": {
         "file": "gs/20260902_694.sog",
         "bytes": 13240496,
-        "gaussians": 1000000
+        "gaussians": 1000000,
+        "size": [
+          45.998,
+          41.654,
+          45.479
+        ]
       },
       "treeIds": [
         "694"
@@ -281,6 +343,8 @@
       "id": "20260902_695",
       "title": "695",
       "description": "",
+      "warning": null,
+      "metresPerUnit": 0.3697,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
@@ -295,7 +359,12 @@
       "converted": {
         "file": "gs/20260902_695.sog",
         "bytes": 13066659,
-        "gaussians": 1000000
+        "gaussians": 1000000,
+        "size": [
+          19.993,
+          20.469,
+          19.999
+        ]
       },
       "treeIds": [
         "695"
@@ -307,6 +376,8 @@
       "id": "20260902_696",
       "title": "696",
       "description": "",
+      "warning": null,
+      "metresPerUnit": 0.3205,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
@@ -321,7 +392,12 @@
       "converted": {
         "file": "gs/20260902_696.sog",
         "bytes": 12958986,
-        "gaussians": 1000000
+        "gaussians": 1000000,
+        "size": [
+          52.999,
+          38.887,
+          46.996
+        ]
       },
       "treeIds": [
         "696"

@@ -15,6 +15,8 @@ export interface SceneConverted {
   bytes: number;
   /** 実際に配信される点数。元データより大幅に少ない */
   gaussians: number | null;
+  /** x, y, z の広がり (ユニット)。metresPerUnit を掛けると実寸になる */
+  size: [number, number, number] | null;
 }
 
 /**
@@ -32,6 +34,16 @@ export interface Scene {
   id: string;
   title: string;
   description: string;
+  /** データに問題がある場合の注意書き。現地で誤らないよう目立たせて出す */
+  warning: string | null;
+  /**
+   * 1 ユニットが何メートルか。
+   *
+   * 再構成のスケールは撮影ごとに任意なので、シーンごとに違う。
+   * 写り込んでいるヘリポート (一辺 50cm) を物差しにして測っている。
+   * 測れなかったシーンは null。
+   */
+  metresPerUnit: number | null;
   tags: string[];
   /** 撮影日 (YYYY-MM-DD) */
   capturedAt: string | null;

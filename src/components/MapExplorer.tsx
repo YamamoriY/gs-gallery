@@ -29,8 +29,8 @@ export function MapExplorer({ entries, bounds, without, source }: Props) {
         />
       </div>
 
-      <aside className="flex h-1/2 w-full flex-col overflow-y-auto border-t border-white/10 lg:h-full lg:w-1/3 lg:border-l lg:border-t-0">
-        <div className="border-b border-white/10 px-5 py-4">
+      <aside className="flex h-1/2 w-full flex-col overflow-y-auto border-t border-line lg:h-full lg:w-1/3 lg:border-l lg:border-t-0">
+        <div className="border-b border-line px-5 py-4">
           <h1 className="text-base font-semibold">立木の位置</h1>
           <p className="mt-1 text-xs leading-relaxed text-paper-dim">
             {entries.length} 株 / {treeCount} 本。位置は{" "}
@@ -46,7 +46,7 @@ export function MapExplorer({ entries, bounds, without, source }: Props) {
           </p>
         </div>
 
-        <ul className="divide-y divide-white/10">
+        <ul className="divide-y divide-line">
           {entries.map((e) => (
             <li key={e.scene.id}>
               <div
@@ -63,7 +63,7 @@ export function MapExplorer({ entries, bounds, without, source }: Props) {
                 }}
                 className={
                   "cursor-pointer px-5 py-3 transition " +
-                  (e.scene.id === selected ? "bg-moss/15" : "hover:bg-white/5")
+                  (e.scene.id === selected ? "bg-moss/15" : "hover:bg-bark-soft")
                 }
               >
                 <div className="flex items-baseline justify-between gap-3">
@@ -111,7 +111,7 @@ export function MapExplorer({ entries, bounds, without, source }: Props) {
                 </div>
 
                 {e.estimated && (
-                  <p className="mt-2 text-xs leading-relaxed text-amber-300/80">
+                  <p className="mt-2 text-xs leading-relaxed text-amber-700">
                     位置は実測ではなく推定です。
                     {e.trees.find((t) => t.positionEstimated)?.note}
                   </p>
@@ -122,7 +122,7 @@ export function MapExplorer({ entries, bounds, without, source }: Props) {
         </ul>
 
         {without.length > 0 && (
-          <div className="border-t border-white/10 px-5 py-4">
+          <div className="border-t border-line px-5 py-4">
             <h2 className="text-sm font-semibold">立木が未設定のシーン</h2>
             <p className="mt-1 text-xs leading-relaxed text-paper-dim">
               立木番号は成果物のファイル名から決まります。番号でない名前の
@@ -135,7 +135,7 @@ export function MapExplorer({ entries, bounds, without, source }: Props) {
                 <li key={s.id}>
                   <Link
                     href={`/scenes/${s.id}/`}
-                    className="rounded border border-white/15 px-2 py-0.5 font-mono text-xs text-paper-dim hover:border-white/40 hover:text-paper"
+                    className="rounded border border-line px-2 py-0.5 font-mono text-xs text-paper-dim hover:border-paper-dim hover:text-paper"
                   >
                     {s.id}
                   </Link>

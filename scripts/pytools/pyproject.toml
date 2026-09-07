@@ -1,7 +1,7 @@
 [project]
-name = "mori-denoise"
+name = "mori-pytools"
 version = "0.1.0"
-description = "3DGS の PLY からノイズを落とす"
+description = "3DGS の PLY を扱う Python 側のツール"
 requires-python = ">=3.10,<3.13"
 dependencies = [
     "numpy>=1.26",

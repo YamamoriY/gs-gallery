@@ -20,6 +20,7 @@ export const PROJECTS_DIR =
 export const DATA_DIR = path.join(ROOT, "data");
 export const SCENES_JSON = path.join(DATA_DIR, "scenes.json");
 export const OVERRIDES_JSON = path.join(DATA_DIR, "scenes.overrides.json");
+export const SCALE_JSON = path.join(DATA_DIR, "scale.json");
 
 export const PUBLIC_DIR = path.join(ROOT, "public");
 
@@ -67,6 +68,7 @@ export const DENOISE_FLAGS = {
   minOpacity: "--min-opacity",
 };
 
-export const DENOISE_DIR = path.join(ROOT, "scripts", "denoise");
+/** Python 側のツール置き場。uv で動かす */
+export const PYTOOLS_DIR = path.join(ROOT, "scripts", "pytools");
 
 export const DEFAULT_PRESET = process.env.MORI_PRESET ?? "light";

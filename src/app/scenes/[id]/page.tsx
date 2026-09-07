@@ -7,6 +7,8 @@ import {
   formatCount,
   getScene,
   getScenes,
+  sceneSizeMetres,
+  formatSize,
 } from "@/lib/scenes";
 import {
   directionsUrl,
@@ -31,6 +33,7 @@ export default async function ScenePage({
 
   // 萌芽更新した株は 1 回の撮影に複数の幹が入っている
   const placed = getSceneTreesFor(scene);
+  const sizeMetres = sceneSizeMetres(scene);
 
   const facts: [string, string][] = [
     ["撮影日", scene.capturedAt ?? "—"],
@@ -46,6 +49,10 @@ export default async function ScenePage({
         ? `${scene.converted.gaussians ? `${formatCount(scene.converted.gaussians)} ガウシアン / ` : ""}` +
           formatBytes(scene.converted.bytes)
         : "—",
+    ],
+    [
+      "この空間の大きさ",
+      sizeMetres ? `約 ${formatSize(sizeMetres)}` : "スケール未計測",
     ],
     ["元の写真", scene.imageCount !== null ? `${scene.imageCount} 枚` : "—"],
     ["プロジェクト", scene.sourceProject ?? "—"],
@@ -77,16 +84,29 @@ export default async function ScenePage({
             {scene.description}
           </p>
         )}
+        {scene.warning && (
+          <p className="mt-3 max-w-2xl rounded border border-amber-600/50 bg-amber-50 px-3 py-2 text-sm text-amber-900">
+            {scene.warning}
+          </p>
+        )}
       </div>
 
       <SceneViewer
         scene={scene}
-        className="aspect-video w-full rounded-lg border border-white/10 bg-black"
+        className="aspect-video w-full rounded-lg border border-line bg-black"
       />
 
-      <p className="mt-3 text-xs text-paper-dim">
-        ドラッグで視点回転、ホイールでズーム。WASD で移動できます。
-      </p>
+      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-xs text-paper-dim">
+        <span>ドラッグで視点回転、ホイールでズーム。WASD で移動できます。</span>
+        {sizeMetres ? (
+          <span>
+            この空間は約 <span className="text-paper">{formatSize(sizeMetres)}</span>
+            。写り込んでいるヘリポート（一辺 50 cm）を物差しにして測っています
+          </span>
+        ) : (
+          <span>スケール未計測（ヘリポートが写っていないか、検出できていません）</span>
+        )}
+      </div>
 
       {placed ? (
         <div className="mt-6 rounded-lg border border-moss/30 bg-moss/5 px-4 py-3">
@@ -121,21 +141,21 @@ export default async function ScenePage({
             </Link>
           </div>
           {placed.estimated && (
-            <p className="mt-2 text-xs leading-relaxed text-amber-300/80">
+            <p className="mt-2 text-xs leading-relaxed text-amber-700">
               位置は実測ではなく推定です。
               {placed.trees.find((t) => t.positionEstimated)?.note}
             </p>
           )}
         </div>
       ) : (
-        <p className="mt-6 text-xs text-amber-300/70">
+        <p className="mt-6 text-xs text-amber-700">
           このシーンにはまだ立木が結び付いていません。
         </p>
       )}
 
       <dl className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
         {facts.map(([label, value]) => (
-          <div key={label} className="border-t border-white/10 pt-2">
+          <div key={label} className="border-t border-line pt-2">
             <dt className="text-xs text-paper-dim">{label}</dt>
             <dd className="text-sm">{value}</dd>
           </div>

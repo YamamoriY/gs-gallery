@@ -27,7 +27,7 @@ import {
   GS_DIR,
   CACHE_DIR,
   DENOISE,
-  DENOISE_DIR,
+  PYTOOLS_DIR,
   DENOISE_FLAGS,
   PRESETS,
   DEFAULT_PRESET,
@@ -134,8 +134,8 @@ async function denoise(input, output, settings) {
 
   await spawnAsync("uv", [
     "run",
-    "--project", DENOISE_DIR,
-    "python", path.join(DENOISE_DIR, "denoise.py"),
+    "--project", PYTOOLS_DIR,
+    "python", path.join(PYTOOLS_DIR, "denoise.py"),
     input,
     output,
     ...flags,

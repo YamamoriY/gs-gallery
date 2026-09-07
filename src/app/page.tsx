@@ -26,7 +26,7 @@ export default function Home() {
       </section>
 
       {scenes.length === 0 ? (
-        <div className="rounded-lg border border-dashed border-white/15 p-10 text-center text-sm text-paper-dim">
+        <div className="rounded-lg border border-dashed border-line p-10 text-center text-sm text-paper-dim">
           <p>まだ公開できるシーンがありません。</p>
           <p className="mt-2">
             <code className="text-paper">npm run convert</code> で PLY を SOG

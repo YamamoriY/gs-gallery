@@ -1,0 +1,151 @@
+{
+  "_comment": "scripts/measure-scale.mjs が書き出す。橙色のヘリポート (一辺 50cm) を物差しにして測った 1 ユニットあたりのメートル数。手で決めたい場合は scenes.overrides.json の metresPerUnit が優先される。",
+  "generatedAt": "2026-09-07T02:26:12.979Z",
+  "markerSideMetres": 0.5,
+  "scenes": {
+    "20260902_684": {
+      "found": false,
+      "reason": "形が正方形の板になっていない",
+      "points": 102,
+      "size": [
+        0.745,
+        0.48
+      ],
+      "squareness": 0.645,
+      "flatness": 0.447,
+      "centre": [
+        -1.7,
+        5.056,
+        -0.944
+      ],
+      "metresPerUnit": 0.8167
+    },
+    "20260902_685": {
+      "found": false,
+      "reason": "十分な大きさのまとまりが無い"
+    },
+    "20260902_686": {
+      "found": true,
+      "reason": null,
+      "points": 1276,
+      "size": [
+        1.404,
+        1.4
+      ],
+      "squareness": 0.997,
+      "flatness": 0.166,
+      "centre": [
+        -6.487,
+        6.32,
+        5.527
+      ],
+      "metresPerUnit": 0.3566
+    },
+    "20260902_687-688": {
+      "found": false,
+      "reason": "十分な大きさのまとまりが無い"
+    },
+    "20260902_689-691": {
+      "found": true,
+      "reason": null,
+      "points": 931,
+      "size": [
+        1.659,
+        1.717
+      ],
+      "squareness": 0.966,
+      "flatness": 0.148,
+      "centre": [
+        5.675,
+        10.338,
+        5.631
+      ],
+      "metresPerUnit": 0.2962
+    },
+    "20260902_692": {
+      "found": true,
+      "reason": null,
+      "points": 990,
+      "size": [
+        0.909,
+        0.805
+      ],
+      "squareness": 0.885,
+      "flatness": 0.223,
+      "centre": [
+        7.28,
+        4.099,
+        -1.293
+      ],
+      "metresPerUnit": 0.5835
+    },
+    "20260902_693": {
+      "found": true,
+      "reason": null,
+      "points": 990,
+      "size": [
+        0.909,
+        0.805
+      ],
+      "squareness": 0.885,
+      "flatness": 0.223,
+      "centre": [
+        7.28,
+        4.099,
+        -1.293
+      ],
+      "metresPerUnit": 0.5835
+    },
+    "20260902_694": {
+      "found": false,
+      "reason": "形が正方形の板になっていない",
+      "points": 184,
+      "size": [
+        1.198,
+        0.609
+      ],
+      "squareness": 0.508,
+      "flatness": 0.218,
+      "centre": [
+        -6.65,
+        20.046,
+        1.306
+      ],
+      "metresPerUnit": 0.5533
+    },
+    "20260902_695": {
+      "found": true,
+      "reason": null,
+      "points": 2575,
+      "size": [
+        1.434,
+        1.271
+      ],
+      "squareness": 0.887,
+      "flatness": 0.249,
+      "centre": [
+        -1.698,
+        8.903,
+        3.124
+      ],
+      "metresPerUnit": 0.3697
+    },
+    "20260902_696": {
+      "found": true,
+      "reason": null,
+      "points": 3504,
+      "size": [
+        1.588,
+        1.532
+      ],
+      "squareness": 0.964,
+      "flatness": 0.176,
+      "centre": [
+        -2.634,
+        6.079,
+        1.078
+      ],
+      "metresPerUnit": 0.3205
+    }
+  }
+}

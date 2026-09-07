@@ -15,7 +15,8 @@
     "scan": "node scripts/scan.mjs",
     "thumbs": "node scripts/thumbs.mjs",
     "convert": "node scripts/convert.mjs",
-    "prepare-data": "npm run convert && npm run thumbs && npm run scan"
+    "scale": "node scripts/measure-scale.mjs",
+    "prepare-data": "npm run convert && npm run scale && npm run scan"
   },
   "dependencies": {
     "maplibre-gl": "^6.7.0",

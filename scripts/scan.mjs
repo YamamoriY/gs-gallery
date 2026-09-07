@@ -15,6 +15,7 @@ import {
   DATA_DIR,
   SCENES_JSON,
   OVERRIDES_JSON,
+  SCALE_JSON,
   GS_DIR,
   PUBLIC_DIR,
 } from "./config.mjs";
@@ -85,18 +86,32 @@ function treeIdsFromSlug(slug) {
   return Array.from({ length: to - from + 1 }, (_, i) => String(from + i));
 }
 
-/** 変換済み SOG に実際に何点入っているかを splat-transform に聞く */
-function countGaussians(sogPath) {
+/**
+ * 変換済み SOG の点数と広がりを splat-transform に聞く。
+ * 広がりは実寸表示に使う。外れ値に引っ張られないよう 1〜99 パーセンタイルは
+ * 取れないので、min/max をそのまま使っている (ノイズ除去済みなので概ね妥当)。
+ */
+function statsOf(sogPath) {
   try {
     const out = execFileSync(
       "npx",
       ["--yes", "@playcanvas/splat-transform", "--no-tty", "-q", sogPath,
-       "--info", "json", "null"],
-      { encoding: "utf8", shell: process.platform === "win32" },
+       "--stats", "json", "null"],
+      { encoding: "utf8", shell: process.platform === "win32",
+        maxBuffer: 32 * 1024 * 1024 },
     );
-    return JSON.parse(out).numGaussians ?? null;
+    const parsed = JSON.parse(out);
+    const lod = parsed.stats[0];
+    const axes = ["x", "y", "z"].map((n) => lod.columns.indexOf(n));
+    const size = axes.map(
+      (i) => lod.data.max[i] - lod.data.min[i],
+    );
+    return {
+      gaussians: parsed.numGaussians ?? null,
+      size: size.map((v) => Math.round(v * 1000) / 1000),
+    };
   } catch {
-    return null;
+    return { gaussians: null, size: null };
   }
 }
 
@@ -119,6 +134,8 @@ function main() {
   }
 
   const overrides = loadJson(OVERRIDES_JSON, {});
+  // 1 ユニットが何メートルかは scripts/measure-scale.mjs が別に測っている
+  const scale = loadJson(SCALE_JSON, { scenes: {} }).scenes ?? {};
   const previous = new Map(
     (loadJson(SCENES_JSON, { scenes: [] }).scenes ?? []).map((s) => [s.id, s]),
   );
@@ -144,13 +161,9 @@ function main() {
       // 点数を数えるのは遅いので、ファイルが変わっていなければ使い回す。
       // 点数を持っていない古いカタログからは数え直す。
       converted =
-        converted?.bytes === bytes && converted.gaussians != null
+        converted?.bytes === bytes && converted.size != null
           ? converted
-          : {
-              file: `gs/${id}.sog`,
-              bytes,
-              gaussians: countGaussians(sog),
-            };
+          : { file: `gs/${id}.sog`, bytes, ...statsOf(sog) };
     }
 
     return {
@@ -158,6 +171,11 @@ function main() {
       // 人が上書きしなければファイル名をそのままタイトルにする
       title: overrides[id]?.title ?? slug,
       description: overrides[id]?.description ?? "",
+      warning: overrides[id]?.warning ?? null,
+      // 1 ユニットが何メートルか。手で書いた値を優先する
+      metresPerUnit:
+        overrides[id]?.metresPerUnit ??
+        (scale[id]?.found ? scale[id].metresPerUnit : null),
       tags: overrides[id]?.tags ?? [],
       capturedAt: overrides[id]?.capturedAt ?? date,
       trainedAt: stat.mtime.toISOString().slice(0, 10),

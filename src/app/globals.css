@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bark: #14100c;
-  --color-bark-soft: #1e1811;
-  --color-moss: #7fb069;
-  --color-moss-dim: #4a6b3d;
-  --color-paper: #efeae1;
-  --color-paper-dim: #9a9284;
+  /* 紙のような明るい面に、文字と差し色を載せる。
+     林内の写真も 3DGS も暗いので、周りを明るくしておくと中身が沈まない。 */
+  --color-bark: #ffffff;
+  --color-bark-soft: #f4f2ed;
+  --color-moss: #3f6b2b;
+  --color-moss-dim: #6f8f5c;
+  --color-paper: #1c1a16;
+  --color-paper-dim: #6b665d;
+  --color-line: #ddd8cd;
 }
 
 html,
@@ -25,41 +28,36 @@ body {
   padding: 3px 9px;
   border-radius: 999px;
   border: 2px solid rgba(255, 255, 255, 0.85);
-  background: #8fbf5a;
   font-size: 11px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
   white-space: nowrap;
-  color: #0d1108;
+  color: #ffffff;
+  background: #3f6b2b;
   cursor: pointer;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
   transition: transform 0.15s ease;
-}
-/* 位置が実測でないものは色を変えて、現地で鵜呑みにしないようにする */
-.tree-pin[data-estimated="true"] {
-  background: #e8c15c;
-  border-style: dashed;
 }
 .tree-pin[data-selected="true"] {
   transform: scale(1.25);
   border-color: #fff;
-  box-shadow: 0 0 0 4px rgba(143, 191, 90, 0.35), 0 1px 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 4px rgba(63, 107, 43, 0.35), 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 .tree-pin:hover {
   transform: scale(1.15);
 }
 
-/* MapLibre の既定は明るい前提なので、暗い画面に合わせる */
+/* 地図は航空写真の上に出るので、周りが明るくても読めるように白抜きのまま */
 .maplibregl-ctrl-attrib {
-  background: rgba(13, 17, 8, 0.75) !important;
-  color: #cfd6c4;
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: #3c382f;
 }
 .maplibregl-ctrl-attrib a {
-  color: #cfd6c4;
+  color: #3c382f;
 }
 .maplibregl-ctrl-scale {
-  background: rgba(13, 17, 8, 0.75);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #cfd6c4;
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.45);
+  color: #3c382f;
 }

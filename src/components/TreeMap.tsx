@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 // maplibre-gl v6 の ESM ビルドにデフォルトエクスポートは無いので名前で取る
 import {
   Map as MapLibreMap,
@@ -60,11 +61,13 @@ function styleFor(key: BasemapKey): StyleSpecification {
 interface Props {
   entries: SceneTrees[];
   bounds: [[number, number], [number, number]];
+  /** 一覧側で選ばれている株。地図の表示を合わせるだけに使う */
   selected: string | null;
   onSelect: (id: string | null) => void;
 }
 
 export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
+  const router = useRouter();
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibreMap | null>(null);
   const markers = useRef<globalThis.Map<string, Marker>>(new globalThis.Map());
@@ -123,12 +126,14 @@ export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
       el.className = "tree-pin";
       el.dataset.estimated = String(entry.estimated);
       el.textContent = entry.scene.title;
-      el.title = entry.trees
-        .map((t) => `${t.id}: ${t.diameter ? `${t.diameter} cm` : "直径未測定"}`)
-        .join(" / ");
+      el.title =
+        entry.trees
+          .map((t) => `${t.id}: ${t.diameter ? `${t.diameter} cm` : "直径未測定"}`)
+          .join(" / ") + " — 押すと 3D が開きます";
+      // 押したらその株の点群を開く。現地で番号から 3D に飛べるようにする
       el.addEventListener("click", (event) => {
         event.stopPropagation();
-        onSelect(entry.scene.id);
+        router.push(`/scenes/${entry.scene.id}/`);
       });
 
       markers.current.set(
@@ -138,7 +143,7 @@ export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
           .addTo(m),
       );
     }
-  }, [entries, onSelect]);
+  }, [entries, router]);
 
   // 選択状態をマーカーに反映し、選ばれた木に寄る
   useEffect(() => {
@@ -158,7 +163,7 @@ export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
   return (
     <div className="relative h-full w-full">
       <div ref={container} className="h-full w-full" />
-      <div className="absolute left-3 top-3 flex overflow-hidden rounded border border-white/20 bg-bark/90 text-xs backdrop-blur">
+      <div className="absolute left-3 top-3 flex overflow-hidden rounded border border-line bg-bark/95 text-xs backdrop-blur">
         {(Object.keys(BASEMAPS) as BasemapKey[]).map((key) => (
           <button
             key={key}
