@@ -1,14 +1,11 @@
 {
-  "generatedAt": "2026-09-07T01:00:50.033Z",
+  "generatedAt": "2026-09-07T01:38:12.843Z",
   "scenes": [
     {
       "id": "20260831_15tree",
-      "title": "15本の樹 (Osmo)",
-      "description": "全体を見せたいシーンなので、遠方ノイズを箱で落とすだけにして実体は削らない。",
-      "tags": [
-        "樹木",
-        "Osmo"
-      ],
+      "title": "15tree",
+      "description": "15 本の樹 (Osmo)。ミズナラ直径測定の対象ではないので一旦アーカイブから外している",
+      "tags": [],
       "capturedAt": "2026-08-31",
       "trainedAt": "2026-09-02",
       "sourceProject": "2026-08-31_15tree_osmo",
@@ -19,46 +16,15 @@
         "gaussians": 5000000,
         "shDegree": 3
       },
-      "converted": {
-        "file": "gs/20260831_15tree.sog",
-        "bytes": 12542897,
-        "gaussians": 1000000
-      },
+      "converted": null,
       "pointId": null,
       "thumbnail": null,
-      "hidden": false
-    },
-    {
-      "id": "20260831_15tree_2",
-      "title": "15本の樹 (Osmo) 2",
-      "description": "全体を見せたいシーンなので、遠方ノイズを箱で落とすだけにして実体は削らない。",
-      "tags": [
-        "樹木",
-        "Osmo"
-      ],
-      "capturedAt": "2026-08-31",
-      "trainedAt": "2026-09-02",
-      "sourceProject": "2026-08-31_15tree_osmo",
-      "imageCount": 775,
-      "source": {
-        "file": "20260831_15tree_2.ply",
-        "bytes": 1240001532,
-        "gaussians": 5000000,
-        "shDegree": 3
-      },
-      "converted": {
-        "file": "gs/20260831_15tree_2.sog",
-        "bytes": 12542897,
-        "gaussians": 1000000
-      },
-      "pointId": null,
-      "thumbnail": null,
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "20260831_596-599",
       "title": "596-599",
-      "description": "8眼リグのフレーム596-599のみで学習。",
+      "description": "8 眼リグのフレーム 596-599 のみで学習。一旦アーカイブから外している",
       "tags": [],
       "capturedAt": "2026-08-31",
       "trainedAt": "2026-09-02",
@@ -70,19 +36,15 @@
         "gaussians": 5000000,
         "shDegree": 3
       },
-      "converted": {
-        "file": "gs/20260831_596-599.sog",
-        "bytes": 12692109,
-        "gaussians": 1000000
-      },
+      "converted": null,
       "pointId": null,
       "thumbnail": null,
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "20260831_single01",
       "title": "single01",
-      "description": "",
+      "description": "一旦アーカイブから外している",
       "tags": [],
       "capturedAt": "2026-08-31",
       "trainedAt": "2026-09-01",
@@ -94,14 +56,10 @@
         "gaussians": 5000000,
         "shDegree": 3
       },
-      "converted": {
-        "file": "gs/20260831_single01.sog",
-        "bytes": 12640351,
-        "gaussians": 1000000
-      },
+      "converted": null,
       "pointId": null,
       "thumbnail": null,
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "20260902_684",
@@ -176,22 +134,22 @@
       "hidden": false
     },
     {
-      "id": "20260902_687",
-      "title": "687",
-      "description": "",
+      "id": "20260902_687-688",
+      "title": "687-688",
+      "description": "萌芽更新した株。687 と 688 の 2 本の幹が同じ株から出ている。",
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
       "sourceProject": "2026-09-02_687",
       "imageCount": 152,
       "source": {
-        "file": "20260902_687.ply",
+        "file": "20260902_687-688.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
         "shDegree": 3
       },
       "converted": {
-        "file": "gs/20260902_687.sog",
+        "file": "gs/20260902_687-688.sog",
         "bytes": 12994512,
         "gaussians": 1000000
       },
@@ -200,22 +158,22 @@
       "hidden": false
     },
     {
-      "id": "20260902_688",
-      "title": "688",
-      "description": "",
+      "id": "20260902_689-691",
+      "title": "689-691",
+      "description": "萌芽更新した株。689・690・691 の 3 本の幹が同じ株から出ている。",
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
       "sourceProject": "2026-09-02_688",
       "imageCount": 138,
       "source": {
-        "file": "20260902_688.ply",
+        "file": "20260902_689-691.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
         "shDegree": 3
       },
       "converted": {
-        "file": "gs/20260902_688.sog",
+        "file": "gs/20260902_689-691.sog",
         "bytes": 12966770,
         "gaussians": 1000000
       },
@@ -224,8 +182,8 @@
       "hidden": false
     },
     {
-      "id": "20260902_689",
-      "title": "689",
+      "id": "20260902_692",
+      "title": "692",
       "description": "",
       "tags": [],
       "capturedAt": "2026-09-02",
@@ -233,62 +191,14 @@
       "sourceProject": "2026-09-02_689",
       "imageCount": 208,
       "source": {
-        "file": "20260902_689.ply",
+        "file": "20260902_692.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
         "shDegree": 3
       },
       "converted": {
-        "file": "gs/20260902_689.sog",
+        "file": "gs/20260902_692.sog",
         "bytes": 13046874,
-        "gaussians": 1000000
-      },
-      "pointId": null,
-      "thumbnail": null,
-      "hidden": false
-    },
-    {
-      "id": "20260902_690",
-      "title": "690",
-      "description": "",
-      "tags": [],
-      "capturedAt": "2026-09-02",
-      "trainedAt": "2026-09-04",
-      "sourceProject": "2026-09-02_690",
-      "imageCount": 145,
-      "source": {
-        "file": "20260902_690.ply",
-        "bytes": 1240001532,
-        "gaussians": 5000000,
-        "shDegree": 3
-      },
-      "converted": {
-        "file": "gs/20260902_690.sog",
-        "bytes": 13046874,
-        "gaussians": 1000000
-      },
-      "pointId": null,
-      "thumbnail": null,
-      "hidden": false
-    },
-    {
-      "id": "20260902_691",
-      "title": "691",
-      "description": "",
-      "tags": [],
-      "capturedAt": "2026-09-02",
-      "trainedAt": "2026-09-04",
-      "sourceProject": "2026-09-02_691",
-      "imageCount": 180,
-      "source": {
-        "file": "20260902_691.ply",
-        "bytes": 1009290852,
-        "gaussians": 4069715,
-        "shDegree": 3
-      },
-      "converted": {
-        "file": "gs/20260902_691.sog",
-        "bytes": 13240496,
         "gaussians": 1000000
       },
       "pointId": null,
@@ -302,8 +212,8 @@
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
-      "sourceProject": "2026-09-02_693",
-      "imageCount": 118,
+      "sourceProject": "2026-09-02_690",
+      "imageCount": 145,
       "source": {
         "file": "20260902_693.ply",
         "bytes": 1240001532,
@@ -312,7 +222,7 @@
       },
       "converted": {
         "file": "gs/20260902_693.sog",
-        "bytes": 12958986,
+        "bytes": 13046874,
         "gaussians": 1000000
       },
       "pointId": null,
@@ -320,23 +230,71 @@
       "hidden": false
     },
     {
-      "id": "20260903_692",
-      "title": "692",
+      "id": "20260902_694",
+      "title": "694",
       "description": "",
       "tags": [],
-      "capturedAt": "2026-09-03",
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-04",
+      "sourceProject": "2026-09-02_691",
+      "imageCount": 180,
+      "source": {
+        "file": "20260902_694.ply",
+        "bytes": 1009290852,
+        "gaussians": 4069715,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_694.sog",
+        "bytes": 13240496,
+        "gaussians": 1000000
+      },
+      "pointId": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_695",
+      "title": "695",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
       "sourceProject": "2026-09-02_692",
       "imageCount": 219,
       "source": {
-        "file": "20260903_692.ply",
+        "file": "20260902_695.ply",
         "bytes": 1240001532,
         "gaussians": 5000000,
         "shDegree": 3
       },
       "converted": {
-        "file": "gs/20260903_692.sog",
+        "file": "gs/20260902_695.sog",
         "bytes": 13066659,
+        "gaussians": 1000000
+      },
+      "pointId": null,
+      "thumbnail": null,
+      "hidden": false
+    },
+    {
+      "id": "20260902_696",
+      "title": "696",
+      "description": "",
+      "tags": [],
+      "capturedAt": "2026-09-02",
+      "trainedAt": "2026-09-04",
+      "sourceProject": "2026-09-02_693",
+      "imageCount": 118,
+      "source": {
+        "file": "20260902_696.ply",
+        "bytes": 1240001532,
+        "gaussians": 5000000,
+        "shDegree": 3
+      },
+      "converted": {
+        "file": "gs/20260902_696.sog",
+        "bytes": 12958986,
         "gaussians": 1000000
       },
       "pointId": null,

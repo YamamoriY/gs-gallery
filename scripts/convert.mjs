@@ -232,6 +232,15 @@ async function main() {
     process.exit(1);
   }
 
+  // アーカイブから外したシーンは変換しない。名前を直接指定されたときだけやる
+  if (!targets.length) {
+    const hidden = list.filter((id) => overrides[id]?.hidden);
+    if (hidden.length) {
+      console.log(`hidden なので飛ばす: ${hidden.join(", ")}`);
+      list.splice(0, list.length, ...list.filter((id) => !overrides[id]?.hidden));
+    }
+  }
+
   console.log(
     `プリセット ${presetName}: ${preset.decimate.toLocaleString()}点 / SH${preset.harmonics}`,
   );

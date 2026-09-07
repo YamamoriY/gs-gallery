@@ -119,7 +119,8 @@ function main() {
     const project = overrides[id]?.sourceProject ?? findProject(id);
 
     const sog = path.join(GS_DIR, `${id}.sog`);
-    let converted = previous.get(id)?.converted ?? null;
+    // SOG が無ければ未変換。消したものを変換済みのまま残さない
+    let converted = fs.existsSync(sog) ? (previous.get(id)?.converted ?? null) : null;
     if (fs.existsSync(sog)) {
       const bytes = fs.statSync(sog).size;
       // 点数を数えるのは遅いので、ファイルが変わっていなければ使い回す。
