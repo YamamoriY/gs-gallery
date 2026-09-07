@@ -35,8 +35,8 @@ export function formatCount(n: number): string {
 /**
  * シーンの広がりを実寸で返す。スケールが測れていなければ null。
  *
- * 360 度カメラを地上で回しているので樹冠までは写っておらず、
- * ここに出る高さは実際の樹高より小さい。
+ * **いまサイトでは使っていない。** スケールの自動検出が信用できないため
+ * (README「スケール」参照)。信頼できる metresPerUnit が入ったら戻す。
  */
 export function sceneSizeMetres(scene: Scene): [number, number, number] | null {
   const size = scene.converted?.size;

@@ -1,181 +1,194 @@
 {
-  "_comment": "scripts/measure-scale.mjs が書き出す。橙色のヘリポート (一辺 50cm) を物差しにして測った 1 ユニットあたりのメートル数。手で決めたい場合は scenes.overrides.json の metresPerUnit が優先される。 見つからないシーンは found: false のままにしてある。カメラの地上高を物差しにする方法も試したが、下草や落葉を地面と誤認してばらつきが中央値と同程度になり、使えなかった。",
-  "generatedAt": "2026-09-07T07:17:04.816Z",
+  "_comment": "scripts/measure-scale.mjs が書き出す。橙色のヘリポート (一辺 50cm) を物差しにしようとしたが、検出が信用できないと分かったので found を全て false にしてある。橙色で平らで正方形に近い塊を探しているだけなので、落葉や土が条件を満たすと拾ってしまう。実際 20260902_687-688 の検出箇所を描画したら葉しか写っていなかった。信頼できる値は scenes.overrides.json の metresPerUnit に手で書く。",
+  "generatedAt": "2026-09-07T07:29:30.690Z",
   "markerSideMetres": 0.5,
   "scenes": {
     "20260902_684": {
-      "found": true,
-      "reason": null,
-      "points": 249,
+      "found": false,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 281,
       "size": [
-        0.775,
-        0.711
+        0.914,
+        0.796
       ],
-      "squareness": 0.917,
-      "flatness": 0.237,
+      "squareness": 0.87,
+      "flatness": 0.287,
       "centre": [
-        -1.66,
-        5.028,
-        -1.166
+        -1.657,
+        5.036,
+        -1.14
       ],
-      "metresPerUnit": 0.6727
+      "metresPerUnit": 0.5849
     },
     "20260902_685": {
-      "found": true,
-      "reason": null,
-      "points": 136,
+      "found": false,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 143,
       "size": [
-        0.547,
-        0.556
+        0.611,
+        0.676
       ],
-      "squareness": 0.983,
-      "flatness": 0.29,
+      "squareness": 0.903,
+      "flatness": 0.302,
       "centre": [
-        1.215,
-        4.036,
-        4.759
+        1.219,
+        4.039,
+        4.749
       ],
-      "metresPerUnit": 0.9069
+      "metresPerUnit": 0.7769
     },
     "20260902_686": {
-      "found": true,
-      "reason": null,
-      "points": 1116,
+      "found": false,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 1208,
       "size": [
-        1.459,
-        1.404
+        1.547,
+        1.503
       ],
-      "squareness": 0.962,
-      "flatness": 0.168,
+      "squareness": 0.972,
+      "flatness": 0.209,
       "centre": [
         -6.466,
-        6.312,
-        5.552
+        6.314,
+        5.555
       ],
-      "metresPerUnit": 0.3492
+      "metresPerUnit": 0.3279
     },
     "20260902_687-688": {
       "found": false,
-      "reason": "十分な大きさのまとまりが無い"
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 1781,
+      "size": [
+        2.649,
+        2.983
+      ],
+      "squareness": 0.888,
+      "flatness": 0.202,
+      "centre": [
+        -10.267,
+        11.656,
+        2.496
+      ],
+      "metresPerUnit": 0.1776
     },
     "20260902_689-691": {
-      "found": true,
-      "reason": null,
-      "points": 1498,
+      "found": false,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 2036,
       "size": [
-        1.7,
-        1.716
+        1.882,
+        1.965
       ],
-      "squareness": 0.991,
-      "flatness": 0.119,
+      "squareness": 0.957,
+      "flatness": 0.223,
       "centre": [
-        5.459,
-        10.349,
-        5.536
+        5.445,
+        10.376,
+        5.53
       ],
-      "metresPerUnit": 0.2927
+      "metresPerUnit": 0.26
     },
     "20260902_692": {
-      "found": true,
-      "reason": null,
-      "points": 806,
+      "found": false,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 810,
       "size": [
-        0.862,
-        0.811
+        0.977,
+        0.805
       ],
-      "squareness": 0.94,
-      "flatness": 0.232,
+      "squareness": 0.823,
+      "flatness": 0.24,
       "centre": [
         7.288,
         4.094,
-        -1.256
+        -1.257
       ],
-      "metresPerUnit": 0.5978
+      "metresPerUnit": 0.5612
     },
     "20260902_693": {
       "found": false,
-      "reason": "形が正方形の板になっていない",
-      "points": 358,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 1325,
       "size": [
-        0.705,
-        1.781
+        2.113,
+        2.031
       ],
-      "squareness": 0.396,
-      "flatness": 0.363,
+      "squareness": 0.961,
+      "flatness": 0.183,
       "centre": [
-        -0.903,
-        3.505,
-        -0.914
+        -0.252,
+        3.604,
+        -0.783
       ],
-      "metresPerUnit": 0.4022
+      "metresPerUnit": 0.2413
     },
     "20260902_694": {
       "found": false,
-      "reason": "形が正方形の板になっていない",
-      "points": 239,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 1249,
       "size": [
-        0.808,
-        1.217
+        2.65,
+        2.73
       ],
-      "squareness": 0.664,
-      "flatness": 0.23,
+      "squareness": 0.971,
+      "flatness": 0.152,
       "centre": [
-        -6.918,
-        20.094,
-        1.351
+        -6.87,
+        20.122,
+        1.024
       ],
-      "metresPerUnit": 0.4939
+      "metresPerUnit": 0.1859
     },
     "20260902_695": {
-      "found": true,
-      "reason": null,
-      "points": 2678,
+      "found": false,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 2767,
       "size": [
-        1.284,
-        1.313
+        1.489,
+        1.448
       ],
-      "squareness": 0.978,
-      "flatness": 0.227,
+      "squareness": 0.973,
+      "flatness": 0.272,
       "centre": [
-        -1.7,
-        8.888,
-        3.115
+        -1.711,
+        8.891,
+        3.114
       ],
-      "metresPerUnit": 0.385
+      "metresPerUnit": 0.3405
     },
     "20260902_696": {
-      "found": true,
-      "reason": null,
-      "points": 3763,
+      "found": false,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 3849,
       "size": [
-        1.556,
-        1.529
+        1.807,
+        1.737
       ],
-      "squareness": 0.983,
-      "flatness": 0.183,
+      "squareness": 0.961,
+      "flatness": 0.202,
       "centre": [
-        -2.698,
-        6.076,
-        1.037
+        -2.696,
+        6.079,
+        1.038
       ],
-      "metresPerUnit": 0.3242
+      "metresPerUnit": 0.2822
     },
     "20260831_596-599": {
-      "found": true,
-      "reason": null,
-      "points": 790,
+      "found": false,
+      "reason": "自動検出は信用できないため無効化 (2026-09-07)",
+      "points": 964,
       "size": [
-        1.272,
-        1.219
+        1.593,
+        1.422
       ],
-      "squareness": 0.958,
-      "flatness": 0.237,
+      "squareness": 0.893,
+      "flatness": 0.291,
       "centre": [
-        5.505,
-        4.071,
-        5.779
+        5.535,
+        4.081,
+        5.772
       ],
-      "metresPerUnit": 0.4014
+      "metresPerUnit": 0.3316
     }
   }
 }

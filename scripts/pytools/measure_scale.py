@@ -2,6 +2,10 @@
 3DGS に写っているヘリポート (一辺 50cm の橙色の正方形) を探して、
 このシーンの 1 ユニットが何メートルかを出す。
 
+目印は橙色の「枠」で中央が白い。点がまばらだと枠が途切れて別々のかたまりに
+割れ、細長い断片として拾われる (20260902_693 で 0.71x1.78 になった)。
+クラスタリングの距離 --eps はそれが繋がる程度に広く取る必要がある。
+
   python measure_scale.py 入力.ply
 
 結果は JSON で標準出力に出す。見つからなければ found: false。
@@ -28,6 +32,8 @@ def parse_args():
                    help="目印の一辺の実寸 (m)")
     p.add_argument("--min-points", type=int, default=100,
                    help="目印とみなすのに必要な点数")
+    p.add_argument("--eps", type=float, default=0.20,
+                   help="クラスタリングの距離。枠が割れない程度に広く取る")
     p.add_argument("--min-squareness", type=float, default=0.75,
                    help="短辺÷長辺がこれ以上なら正方形とみなす")
     p.add_argument("--max-flatness", type=float, default=0.35,
@@ -77,7 +83,7 @@ def main():
         return 0
 
     candidates = points[mask]
-    labels = DBSCAN(eps=0.12, min_samples=15, n_jobs=-1).fit_predict(candidates)
+    labels = DBSCAN(eps=args.eps, min_samples=15, n_jobs=-1).fit_predict(candidates)
     unique, counts = np.unique(labels[labels >= 0], return_counts=True)
     if len(counts) == 0:
         print(json.dumps({"found": False, "reason": "まとまりが無い"}))

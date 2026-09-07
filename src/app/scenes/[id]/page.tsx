@@ -7,8 +7,6 @@ import {
   formatCount,
   getScene,
   getScenes,
-  sceneSizeMetres,
-  formatSize,
 } from "@/lib/scenes";
 import {
   directionsUrl,
@@ -33,7 +31,6 @@ export default async function ScenePage({
 
   // 萌芽更新した株は 1 回の撮影に複数の幹が入っている
   const placed = getSceneTreesFor(scene);
-  const sizeMetres = sceneSizeMetres(scene);
 
   const facts: [string, string][] = [
     ["撮影日", scene.capturedAt ?? "—"],
@@ -49,10 +46,6 @@ export default async function ScenePage({
         ? `${scene.converted.gaussians ? `${formatCount(scene.converted.gaussians)} ガウシアン / ` : ""}` +
           formatBytes(scene.converted.bytes)
         : "—",
-    ],
-    [
-      "この空間の大きさ",
-      sizeMetres ? `約 ${formatSize(sizeMetres)}` : "スケール未計測",
     ],
     ["元の写真", scene.imageCount !== null ? `${scene.imageCount} 枚` : "—"],
     ["プロジェクト", scene.sourceProject ?? "—"],
@@ -96,17 +89,9 @@ export default async function ScenePage({
         className="aspect-video w-full rounded-lg border border-line bg-white"
       />
 
-      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-xs text-paper-dim">
-        <span>ドラッグで視点回転、ホイールでズーム。WASD で移動できます。</span>
-        {sizeMetres ? (
-          <span>
-            この空間は約 <span className="text-paper">{formatSize(sizeMetres)}</span>
-            。写り込んでいるヘリポート（一辺 50 cm）を物差しにして測っています
-          </span>
-        ) : (
-          <span>スケール未計測（ヘリポートが写っていないか、検出できていません）</span>
-        )}
-      </div>
+      <p className="mt-3 text-xs text-paper-dim">
+        ドラッグで視点回転、ホイールでズーム。WASD で移動できます。
+      </p>
 
       {placed ? (
         <div className="mt-6 rounded-lg border border-moss/30 bg-moss/5 px-4 py-3">
