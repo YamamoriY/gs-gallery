@@ -23,6 +23,7 @@ import {
   OVERRIDES_JSON,
 } from "./config.mjs";
 
+
 const SCALE_JSON = path.join(DATA_DIR, "scale.json");
 
 const args = process.argv.slice(2);
@@ -107,7 +108,10 @@ async function main() {
         _comment:
           "scripts/measure-scale.mjs が書き出す。橙色のヘリポート (一辺 50cm) を" +
           "物差しにして測った 1 ユニットあたりのメートル数。" +
-          "手で決めたい場合は scenes.overrides.json の metresPerUnit が優先される。",
+          "手で決めたい場合は scenes.overrides.json の metresPerUnit が優先される。 " +
+          "見つからないシーンは found: false のままにしてある。" +
+          "カメラの地上高を物差しにする方法も試したが、下草や落葉を地面と" +
+          "誤認してばらつきが中央値と同程度になり、使えなかった。",
         generatedAt: new Date().toISOString(),
         markerSideMetres: 0.5,
         scenes,
