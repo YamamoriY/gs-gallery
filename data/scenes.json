@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T06:38:12.320Z",
+  "generatedAt": "2026-09-07T06:41:50.305Z",
   "scenes": [
     {
       "id": "20260831_15tree",
@@ -210,7 +210,7 @@
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
-      "sourceProject": "2026-09-02_687",
+      "sourceProject": "2026-09-02_687-688",
       "imageCount": 152,
       "source": {
         "file": "20260902_687-688.ply",
@@ -249,7 +249,7 @@
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
-      "sourceProject": "2026-09-02_688",
+      "sourceProject": "2026-09-02_689-691",
       "imageCount": 138,
       "source": {
         "file": "20260902_689-691.ply",
@@ -289,7 +289,7 @@
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
-      "sourceProject": "2026-09-02_689",
+      "sourceProject": "2026-09-02_692",
       "imageCount": 208,
       "source": {
         "file": "20260902_692.ply",
@@ -327,7 +327,7 @@
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-07",
-      "sourceProject": "2026-09-02_690",
+      "sourceProject": "2026-09-02_693",
       "imageCount": 145,
       "source": {
         "file": "20260902_693.ply",
@@ -365,7 +365,7 @@
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
-      "sourceProject": "2026-09-02_691",
+      "sourceProject": "2026-09-02_694",
       "imageCount": 180,
       "source": {
         "file": "20260902_694.ply",
@@ -403,7 +403,7 @@
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
-      "sourceProject": "2026-09-02_692",
+      "sourceProject": "2026-09-02_695",
       "imageCount": 219,
       "source": {
         "file": "20260902_695.ply",
@@ -441,7 +441,7 @@
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
-      "sourceProject": "2026-09-02_693",
+      "sourceProject": "2026-09-02_696",
       "imageCount": 118,
       "source": {
         "file": "20260902_696.ply",
