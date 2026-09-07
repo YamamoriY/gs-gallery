@@ -97,7 +97,7 @@ export function getSceneTreesFor(scene: Scene): SceneTrees | undefined {
 export interface TreeWithScene {
   tree: Tree;
   scene: Scene;
-  /** 同じ撮影に入っている他の木 */
+  /** 同じ株から出ている他の幹 */
   siblings: Tree[];
 }
 
@@ -142,9 +142,9 @@ export interface TreeRow {
   positionEstimated: boolean;
   scene: Scene;
   /**
-   * 同じ撮影に入っていて、この行には含まれない木。
-   * 萌芽更新した株の別の幹のこともあれば (687 と 688)、
-   * 単に近くに立っていて 1 回で撮れただけのこともある (596 と 599)。
+   * 同じ株から出ていて、この行には含まれない幹。
+   * 1 シーンに複数の立木が入るのは萌芽更新した株を 1 回で撮った場合なので、
+   * 同じシーンの立木は同じ株の幹になる。
    */
   siblingIds: string[];
 }

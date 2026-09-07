@@ -142,7 +142,7 @@ export function TreeTable({ rows }: { rows: TreeRow[] }) {
                 </Link>
                 {r.siblingIds.length > 0 && (
                   <span className="ml-2 text-xs text-paper-dim">
-                    {r.siblingIds.join("・")} と同じ撮影
+                    {r.siblingIds.join("・")} と同じ株
                   </span>
                 )}
                 {r.scene.warning && (
