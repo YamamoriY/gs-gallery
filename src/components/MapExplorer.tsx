@@ -2,27 +2,27 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { SurveyMap } from "./SurveyMap";
-import { directionsUrl, formatLatLng } from "@/lib/points";
-import type { PointWithScenes, SurveySource } from "@/lib/points";
+import { TreeMap } from "./TreeMap";
+import { directionsUrl, formatDms, formatLatLng } from "@/lib/trees";
+import type { SceneTrees, TreeSource } from "@/lib/trees";
 import type { Scene } from "@/lib/types";
 
 interface Props {
-  points: PointWithScenes[];
+  entries: SceneTrees[];
   bounds: [[number, number], [number, number]];
-  unplaced: Scene[];
-  source: SurveySource;
+  without: Scene[];
+  source: TreeSource;
 }
 
-export function MapExplorer({ points, bounds, unplaced, source }: Props) {
+export function MapExplorer({ entries, bounds, without, source }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
-  const placed = points.filter((p) => p.scenes.length).length;
+  const treeCount = entries.reduce((a, e) => a + e.trees.length, 0);
 
   return (
     <div className="flex h-[calc(100vh-4.5rem)] flex-col lg:flex-row">
       <div className="h-1/2 w-full lg:h-full lg:w-2/3">
-        <SurveyMap
-          points={points}
+        <TreeMap
+          entries={entries}
           bounds={bounds}
           selected={selected}
           onSelect={setSelected}
@@ -31,96 +31,107 @@ export function MapExplorer({ points, bounds, unplaced, source }: Props) {
 
       <aside className="flex h-1/2 w-full flex-col overflow-y-auto border-t border-white/10 lg:h-full lg:w-1/3 lg:border-l lg:border-t-0">
         <div className="border-b border-white/10 px-5 py-4">
-          <h1 className="text-base font-semibold">測定地点</h1>
-          <p className="mt-1 text-xs text-paper-dim">
-            {source.name}（{source.author}）から取得した {points.length} 地点。
-            うち {placed} 地点にシーンが結び付いています。
+          <h1 className="text-base font-semibold">立木の位置</h1>
+          <p className="mt-1 text-xs leading-relaxed text-paper-dim">
+            {entries.length} 株 / {treeCount} 本。位置は{" "}
+            <a
+              className="underline hover:text-paper"
+              href={source.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {source.name}
+            </a>
+            （{source.author}）の実測値。
           </p>
         </div>
 
         <ul className="divide-y divide-white/10">
-          {points.map((p) => (
-            <li key={p.id}>
-              <button
-                type="button"
-                onClick={() => setSelected(p.id === selected ? null : p.id)}
+          {entries.map((e) => (
+            <li key={e.scene.id}>
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() =>
+                  setSelected(e.scene.id === selected ? null : e.scene.id)
+                }
+                onKeyDown={(ev) => {
+                  if (ev.key === "Enter" || ev.key === " ") {
+                    ev.preventDefault();
+                    setSelected(e.scene.id === selected ? null : e.scene.id);
+                  }
+                }}
                 className={
-                  "w-full px-5 py-3 text-left transition " +
-                  (p.id === selected ? "bg-moss/15" : "hover:bg-white/5")
+                  "cursor-pointer px-5 py-3 transition " +
+                  (e.scene.id === selected ? "bg-moss/15" : "hover:bg-white/5")
                 }
               >
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="font-mono text-sm text-paper">{p.id}</span>
-                  <span className="text-xs text-paper-dim">{p.species}</span>
-                </div>
-                <div className="mt-1 font-mono text-xs text-paper-dim">
-                  {formatLatLng(p)}
+                  <span className="text-sm font-semibold text-paper">
+                    {e.scene.title}
+                  </span>
+                  <Link
+                    href={`/scenes/${e.scene.id}/`}
+                    onClick={(ev) => ev.stopPropagation()}
+                    className="text-xs text-moss underline hover:text-paper"
+                  >
+                    3D で見る
+                  </Link>
                 </div>
 
-                <dl className="mt-1 flex gap-4 text-xs text-paper-dim">
-                  {p.diameter != null && (
-                    <div>
-                      <dt className="inline">直径 </dt>
-                      <dd className="inline text-paper">{p.diameter} cm</dd>
-                    </div>
-                  )}
-                  {p.height != null && (
-                    <div>
-                      <dt className="inline">樹高 </dt>
-                      <dd className="inline text-paper">{p.height} m</dd>
-                    </div>
-                  )}
-                </dl>
-
-                {p.scenes.length > 0 ? (
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {p.scenes.map((s) => (
-                      <Link
-                        key={s.id}
-                        href={`/scenes/${s.id}/`}
-                        className="rounded border border-moss/40 bg-moss/10 px-2 py-0.5 text-xs text-moss hover:bg-moss/25"
+                {/* 幹ごとに番号と直径。萌芽更新した株は複数行になる */}
+                <ul className="mt-2 space-y-1">
+                  {e.trees.map((t) => (
+                    <li
+                      key={t.id}
+                      className="flex items-baseline gap-3 text-xs"
+                    >
+                      <span className="w-10 font-mono text-paper">{t.id}</span>
+                      <span className="text-paper-dim">
+                        {t.diameter ? `直径 ${t.diameter} cm` : "直径未測定"}
+                      </span>
+                      <a
+                        href={directionsUrl(t.latitude, t.longitude)}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(ev) => ev.stopPropagation()}
+                        className="ml-auto text-paper-dim underline hover:text-paper"
                       >
-                        {s.title}
-                      </Link>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="mt-2 text-xs text-amber-300/70">
-                    シーン未割り当て
+                        経路案内
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-2 font-mono text-xs text-paper-dim">
+                  {formatLatLng(e.latitude, e.longitude)}
+                </div>
+                <div className="font-mono text-xs text-paper-dim">
+                  {formatDms(e.latitude, e.longitude)}
+                </div>
+
+                {e.estimated && (
+                  <p className="mt-2 text-xs leading-relaxed text-amber-300/80">
+                    位置は実測ではなく推定です。
+                    {e.trees.find((t) => t.positionEstimated)?.note}
                   </p>
                 )}
-
-                {p.note && (
-                  <p className="mt-2 text-xs leading-relaxed text-paper-dim">
-                    {p.note}
-                  </p>
-                )}
-
-                <a
-                  href={directionsUrl(p)}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="mt-2 inline-block text-xs text-paper-dim underline hover:text-paper"
-                >
-                  この地点へ経路案内
-                </a>
-              </button>
+              </div>
             </li>
           ))}
         </ul>
 
-        {unplaced.length > 0 && (
+        {without.length > 0 && (
           <div className="border-t border-white/10 px-5 py-4">
-            <h2 className="text-sm font-semibold">地点が未設定のシーン</h2>
+            <h2 className="text-sm font-semibold">立木が未設定のシーン</h2>
             <p className="mt-1 text-xs leading-relaxed text-paper-dim">
-              <code className="text-paper">data/scenes.overrides.json</code> に{" "}
-              <code className="text-paper">{'"pointId": "p01"'}</code>{" "}
-              のように書くと、その地点に結び付きます。萌芽更新した株のように
-              1 地点に複数のシーンが対応する場合は、同じ id を複数のシーンに書きます。
+              立木番号は成果物のファイル名から決まります。番号でない名前の
+              シーンは、<code className="text-paper">data/scenes.overrides.json</code>{" "}
+              に <code className="text-paper">{'"trees": ["684"]'}</code>{" "}
+              と書けば結び付きます。
             </p>
             <ul className="mt-3 flex flex-wrap gap-1.5">
-              {unplaced.map((s) => (
+              {without.map((s) => (
                 <li key={s.id}>
                   <Link
                     href={`/scenes/${s.id}/`}

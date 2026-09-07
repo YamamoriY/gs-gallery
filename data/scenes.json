@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T01:38:12.843Z",
+  "generatedAt": "2026-09-07T01:58:43.557Z",
   "scenes": [
     {
       "id": "20260831_15tree",
@@ -17,7 +17,7 @@
         "shDegree": 3
       },
       "converted": null,
-      "pointId": null,
+      "treeIds": [],
       "thumbnail": null,
       "hidden": true
     },
@@ -37,7 +37,12 @@
         "shDegree": 3
       },
       "converted": null,
-      "pointId": null,
+      "treeIds": [
+        "596",
+        "597",
+        "598",
+        "599"
+      ],
       "thumbnail": null,
       "hidden": true
     },
@@ -57,7 +62,7 @@
         "shDegree": 3
       },
       "converted": null,
-      "pointId": null,
+      "treeIds": [],
       "thumbnail": null,
       "hidden": true
     },
@@ -81,7 +86,9 @@
         "bytes": 13076495,
         "gaussians": 1000000
       },
-      "pointId": null,
+      "treeIds": [
+        "684"
+      ],
       "thumbnail": null,
       "hidden": false
     },
@@ -105,7 +112,9 @@
         "bytes": 11919573,
         "gaussians": 914386
       },
-      "pointId": null,
+      "treeIds": [
+        "685"
+      ],
       "thumbnail": null,
       "hidden": false
     },
@@ -129,7 +138,9 @@
         "bytes": 13064958,
         "gaussians": 1000000
       },
-      "pointId": null,
+      "treeIds": [
+        "686"
+      ],
       "thumbnail": null,
       "hidden": false
     },
@@ -153,7 +164,10 @@
         "bytes": 12994512,
         "gaussians": 1000000
       },
-      "pointId": null,
+      "treeIds": [
+        "687",
+        "688"
+      ],
       "thumbnail": null,
       "hidden": false
     },
@@ -177,7 +191,11 @@
         "bytes": 12966770,
         "gaussians": 1000000
       },
-      "pointId": null,
+      "treeIds": [
+        "689",
+        "690",
+        "691"
+      ],
       "thumbnail": null,
       "hidden": false
     },
@@ -201,7 +219,9 @@
         "bytes": 13046874,
         "gaussians": 1000000
       },
-      "pointId": null,
+      "treeIds": [
+        "692"
+      ],
       "thumbnail": null,
       "hidden": false
     },
@@ -225,7 +245,9 @@
         "bytes": 13046874,
         "gaussians": 1000000
       },
-      "pointId": null,
+      "treeIds": [
+        "693"
+      ],
       "thumbnail": null,
       "hidden": false
     },
@@ -249,7 +271,9 @@
         "bytes": 13240496,
         "gaussians": 1000000
       },
-      "pointId": null,
+      "treeIds": [
+        "694"
+      ],
       "thumbnail": null,
       "hidden": false
     },
@@ -273,7 +297,9 @@
         "bytes": 13066659,
         "gaussians": 1000000
       },
-      "pointId": null,
+      "treeIds": [
+        "695"
+      ],
       "thumbnail": null,
       "hidden": false
     },
@@ -297,7 +323,9 @@
         "bytes": 12958986,
         "gaussians": 1000000
       },
-      "pointId": null,
+      "treeIds": [
+        "696"
+      ],
       "thumbnail": null,
       "hidden": false
     }

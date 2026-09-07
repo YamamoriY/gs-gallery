@@ -2,23 +2,23 @@ import type { Metadata } from "next";
 import { MapExplorer } from "@/components/MapExplorer";
 import {
   getBounds,
-  getPoints,
-  getSurveySource,
-  getUnplacedScenes,
-} from "@/lib/points";
+  getSceneTrees,
+  getScenesWithoutTrees,
+  getTreeSource,
+} from "@/lib/trees";
 
 export const metadata: Metadata = {
-  title: "地図 — data_mori",
-  description: "測定した木の位置と、対応する 3D Gaussian Splatting のシーン",
+  title: "立木の位置 — data_mori",
+  description: "測定した立木の位置と直径、対応する 3D Gaussian Splatting",
 };
 
 export default function MapPage() {
   return (
     <MapExplorer
-      points={getPoints()}
+      entries={getSceneTrees()}
       bounds={getBounds()}
-      unplaced={getUnplacedScenes()}
-      source={getSurveySource()}
+      without={getScenesWithoutTrees()}
+      source={getTreeSource()}
     />
   );
 }

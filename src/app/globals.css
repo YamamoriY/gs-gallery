@@ -20,36 +20,34 @@ body {
     sans-serif;
 }
 
-/* 地図のピン。番号を出して、シーンが結び付いているかを色で分ける */
-.survey-pin {
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
+/* 地図のピン。立木番号をそのまま出すので幅は中身に合わせる */
+.tree-pin {
+  padding: 3px 9px;
   border-radius: 999px;
   border: 2px solid rgba(255, 255, 255, 0.85);
+  background: #8fbf5a;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  white-space: nowrap;
   color: #0d1108;
   cursor: pointer;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
   transition: transform 0.15s ease;
 }
-.survey-pin[data-state="placed"] {
-  background: #8fbf5a;
-}
-/* シーンがまだ無い地点は、割り当て漏れと分かるように色を変える */
-.survey-pin[data-state="empty"] {
+/* 位置が実測でないものは色を変えて、現地で鵜呑みにしないようにする */
+.tree-pin[data-estimated="true"] {
   background: #e8c15c;
+  border-style: dashed;
 }
-.survey-pin[data-selected="true"] {
-  transform: scale(1.35);
+.tree-pin[data-selected="true"] {
+  transform: scale(1.25);
   border-color: #fff;
   box-shadow: 0 0 0 4px rgba(143, 191, 90, 0.35), 0 1px 6px rgba(0, 0, 0, 0.6);
 }
-.survey-pin:hover {
-  transform: scale(1.2);
+.tree-pin:hover {
+  transform: scale(1.15);
 }
 
 /* MapLibre の既定は明るい前提なので、暗い画面に合わせる */

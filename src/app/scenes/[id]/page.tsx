@@ -8,7 +8,12 @@ import {
   getScene,
   getScenes,
 } from "@/lib/scenes";
-import { directionsUrl, formatLatLng, getPoint } from "@/lib/points";
+import {
+  directionsUrl,
+  formatDms,
+  formatLatLng,
+  getSceneTreesFor,
+} from "@/lib/trees";
 
 // 静的書き出しなので、どのシーンのページを作るかをここで列挙する
 export function generateStaticParams() {
@@ -24,12 +29,8 @@ export default async function ScenePage({
   const scene = getScene(id);
   if (!scene) notFound();
 
-  const point = getPoint(scene.pointId);
-  // 萌芽更新した株は幹ごとに番号を振って撮っているので、
-  // 同じ地点にぶら下がる他のシーンを出しておくと現地で迷わない
-  const siblings = point
-    ? point.scenes.filter((s) => s.id !== scene.id)
-    : [];
+  // 萌芽更新した株は 1 回の撮影に複数の幹が入っている
+  const placed = getSceneTreesFor(scene);
 
   const facts: [string, string][] = [
     ["撮影日", scene.capturedAt ?? "—"],
@@ -50,14 +51,17 @@ export default async function ScenePage({
     ["プロジェクト", scene.sourceProject ?? "—"],
   ];
 
-  if (point) {
-    facts.splice(2, 0, ["測定地点", `${point.id} / ${formatLatLng(point)}`]);
-    if (point.diameter != null) {
-      facts.splice(3, 0, ["胸高直径", `${point.diameter} cm`]);
-    }
-    if (point.height != null) {
-      facts.splice(point.diameter != null ? 4 : 3, 0, ["樹高", `${point.height} m`]);
-    }
+  if (placed) {
+    facts.splice(2, 0, [
+      "立木番号",
+      placed.trees.map((t) => t.id).join("、"),
+    ]);
+    facts.splice(3, 0, [
+      "胸高直径",
+      placed.trees
+        .map((t) => (t.diameter ? `${t.id}: ${t.diameter} cm` : `${t.id}: 未測定`))
+        .join(" / "),
+    ]);
   }
 
   return (
@@ -84,49 +88,48 @@ export default async function ScenePage({
         ドラッグで視点回転、ホイールでズーム。WASD で移動できます。
       </p>
 
-      {point ? (
+      {placed ? (
         <div className="mt-6 rounded-lg border border-moss/30 bg-moss/5 px-4 py-3">
-          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-            <span className="text-sm text-paper">現地の位置</span>
-            <span className="font-mono text-sm text-moss">
-              {formatLatLng(point)}
-            </span>
-            {siblings.length > 0 && (
-              <span className="text-xs text-paper-dim">
-                同じ株の別の幹:{" "}
-                {siblings.map((s, i) => (
-                  <span key={s.id}>
-                    {i > 0 && "、"}
-                    <Link className="underline hover:text-paper" href={`/scenes/${s.id}/`}>
-                      {s.title}
-                    </Link>
-                  </span>
-                ))}
-              </span>
-            )}
-          </div>
-          <div className="mt-2 flex flex-wrap gap-4 text-xs">
-            <a
-              className="underline hover:text-paper"
-              href={directionsUrl(point)}
-              target="_blank"
-              rel="noreferrer"
-            >
-              経路案内を開く
-            </a>
+          <div className="text-sm text-paper">現地の位置</div>
+          <ul className="mt-2 space-y-1.5">
+            {placed.trees.map((t) => (
+              <li key={t.id} className="flex flex-wrap items-baseline gap-x-4 text-xs">
+                <span className="w-10 font-mono text-sm text-paper">{t.id}</span>
+                <span className="text-paper-dim">
+                  {t.diameter ? `直径 ${t.diameter} cm` : "直径未測定"}
+                </span>
+                <span className="font-mono text-moss">
+                  {formatLatLng(t.latitude, t.longitude)}
+                </span>
+                <span className="font-mono text-paper-dim">
+                  {formatDms(t.latitude, t.longitude)}
+                </span>
+                <a
+                  className="underline hover:text-paper"
+                  href={directionsUrl(t.latitude, t.longitude)}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  経路案内
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-3 text-xs">
             <Link className="underline hover:text-paper" href="/map/">
               地図で見る
             </Link>
           </div>
-          {point.note && (
-            <p className="mt-2 text-xs leading-relaxed text-paper-dim">
-              {point.note}
+          {placed.estimated && (
+            <p className="mt-2 text-xs leading-relaxed text-amber-300/80">
+              位置は実測ではなく推定です。
+              {placed.trees.find((t) => t.positionEstimated)?.note}
             </p>
           )}
         </div>
       ) : (
         <p className="mt-6 text-xs text-amber-300/70">
-          このシーンにはまだ測定地点が結び付いていません。
+          このシーンにはまだ立木が結び付いていません。
         </p>
       )}
 

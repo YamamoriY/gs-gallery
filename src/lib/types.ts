@@ -18,14 +18,15 @@ export interface SceneConverted {
 }
 
 /**
- * 現地の測定地点への参照。data/survey-points.json の id を指す。
+ * このシーンに写っている立木の番号。data/trees.json の id を指す。
  *
- * 緯度経度をシーンに直接持たせていないのは、萌芽更新した株では
- * 1 つの株から出た複数の幹をそれぞれ別番号で撮っていて、
- * 同じ座標に複数のシーンが対応するため。地点を実体にしておくと、
- * 直径などの測定値も 1 か所で持てる。
+ * 緯度経度をシーンに直接持たせないのは、萌芽更新した株では 1 つの株から
+ * 出た複数の幹をまとめて 1 回で撮っていて、幹ごとに番号も直径も違うため。
+ * 立木を実体にしておくと、幹ごとの測定値をそのまま持てる。
+ *
+ * 既定では成果物のファイル名から決まる (687-688 なら 687 と 688)。
  */
-export type ScenePointId = string;
+export type TreeId = string;
 
 export interface Scene {
   id: string;
@@ -41,7 +42,7 @@ export interface Scene {
   imageCount: number | null;
   source: SceneSource;
   converted: SceneConverted | null;
-  pointId: ScenePointId | null;
+  treeIds: TreeId[];
   thumbnail: string | null;
   hidden: boolean;
 }

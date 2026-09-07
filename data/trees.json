@@ -1,0 +1,129 @@
+{
+  "_comment": "現地で測った立木。番号は現地の立木番号で、成果物の PLY の名前と一致する。1 つのシーンが複数の立木を含むことがある (萌芽更新した株を 1 回の撮影でまとめて撮っているため)。シーンとの対応はファイル名から自動で決まる。",
+  "_precision": "元の測定値は度分秒で秒が 0.1 秒刻み。地上ではおよそ 3 m 相当なので、十進度の下 6 桁まで書いてあっても実際の精度はそこまで無い。幹の同定は番号と直径で行い、座標は現地に着くまでの目安として使う。",
+  "source": {
+    "name": "ミズナラ_直径測定",
+    "author": "石川哲平",
+    "url": "https://maps.app.goo.gl/t81z6sRFHiDnW4gZ6",
+    "retrieved": "2026-09-07"
+  },
+  "trees": [
+    {
+      "id": "684",
+      "species": "ミズナラ",
+      "diameter": 43,
+      "latitude": 42.1065,
+      "longitude": 140.682333,
+      "positionEstimated": false,
+      "note": ""
+    },
+    {
+      "id": "685",
+      "species": "ミズナラ",
+      "diameter": 40,
+      "latitude": 42.10725,
+      "longitude": 140.681167,
+      "positionEstimated": false,
+      "note": ""
+    },
+    {
+      "id": "686",
+      "species": "ミズナラ",
+      "diameter": 36,
+      "latitude": 42.10725,
+      "longitude": 140.68125,
+      "positionEstimated": false,
+      "note": ""
+    },
+    {
+      "id": "687",
+      "species": "ミズナラ",
+      "diameter": 34,
+      "latitude": 42.106778,
+      "longitude": 140.681333,
+      "positionEstimated": false,
+      "note": "萌芽更新した株。688 と同じ株から出ている"
+    },
+    {
+      "id": "688",
+      "species": "ミズナラ",
+      "diameter": 38,
+      "latitude": 42.106806,
+      "longitude": 140.681306,
+      "positionEstimated": false,
+      "note": "萌芽更新した株。687 と同じ株から出ている"
+    },
+    {
+      "id": "692",
+      "species": "ミズナラ",
+      "diameter": 52,
+      "latitude": 42.106861,
+      "longitude": 140.682056,
+      "positionEstimated": false,
+      "note": ""
+    },
+    {
+      "id": "693",
+      "species": "ミズナラ",
+      "diameter": 37,
+      "latitude": 42.106694,
+      "longitude": 140.682167,
+      "positionEstimated": false,
+      "note": ""
+    },
+    {
+      "id": "694",
+      "species": "ミズナラ",
+      "diameter": 42,
+      "latitude": 42.106472,
+      "longitude": 140.682167,
+      "positionEstimated": false,
+      "note": ""
+    },
+    {
+      "id": "695",
+      "species": "ミズナラ",
+      "diameter": 40,
+      "latitude": 42.106417,
+      "longitude": 140.682083,
+      "positionEstimated": false,
+      "note": ""
+    },
+    {
+      "id": "696",
+      "species": "ミズナラ",
+      "diameter": 36,
+      "latitude": 42.1065,
+      "longitude": 140.681306,
+      "positionEstimated": false,
+      "note": ""
+    },
+    {
+      "id": "689",
+      "species": "ミズナラ",
+      "diameter": null,
+      "latitude": 42.10668,
+      "longitude": 140.682194,
+      "positionEstimated": true,
+      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている"
+    },
+    {
+      "id": "690",
+      "species": "ミズナラ",
+      "diameter": null,
+      "latitude": 42.10668,
+      "longitude": 140.682194,
+      "positionEstimated": true,
+      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている"
+    },
+    {
+      "id": "691",
+      "species": "ミズナラ",
+      "diameter": null,
+      "latitude": 42.10668,
+      "longitude": 140.682194,
+      "positionEstimated": true,
+      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている"
+    }
+  ]
+}

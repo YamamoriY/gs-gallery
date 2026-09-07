@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-// maplibre-gl v5 の ESM ビルドにデフォルトエクスポートは無いので名前で取る
+// maplibre-gl v6 の ESM ビルドにデフォルトエクスポートは無いので名前で取る
 import {
   Map as MapLibreMap,
   Marker,
@@ -11,7 +11,7 @@ import {
 } from "maplibre-gl";
 import type { RasterTileSource, StyleSpecification } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import type { PointWithScenes } from "@/lib/points";
+import type { SceneTrees } from "@/lib/trees";
 import { assetUrl } from "@/lib/scenes";
 
 // MapLibre は既定でワーカーの URL を自分のチャンクからの相対で作るが、
@@ -29,13 +29,13 @@ const GSI_ATTRIBUTION =
   '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noreferrer">国土地理院</a>';
 
 const BASEMAPS = {
-  pale: {
-    label: "淡色",
-    tiles: "https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-  },
   photo: {
     label: "航空写真",
     tiles: "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg",
+  },
+  pale: {
+    label: "淡色",
+    tiles: "https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
   },
 } as const;
 
@@ -58,14 +58,13 @@ function styleFor(key: BasemapKey): StyleSpecification {
 }
 
 interface Props {
-  points: PointWithScenes[];
+  entries: SceneTrees[];
   bounds: [[number, number], [number, number]];
-  /** 選ばれた地点。一覧側と同期させる */
   selected: string | null;
   onSelect: (id: string | null) => void;
 }
 
-export function SurveyMap({ points, bounds, selected, onSelect }: Props) {
+export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibreMap | null>(null);
   const markers = useRef<globalThis.Map<string, Marker>>(new globalThis.Map());
@@ -79,7 +78,7 @@ export function SurveyMap({ points, bounds, selected, onSelect }: Props) {
       container: container.current,
       style: styleFor("photo"),
       bounds,
-      fitBoundsOptions: { padding: 80, maxZoom: 18 },
+      fitBoundsOptions: { padding: 70, maxZoom: 18 },
       // 林内の細かい位置合わせをするので、既定より寄れるようにする
       maxZoom: 21,
     });
@@ -100,7 +99,6 @@ export function SurveyMap({ points, bounds, selected, onSelect }: Props) {
       m.remove();
       map.current = null;
     };
-    // bounds と onSelect は初期化時の値だけ使う
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -112,7 +110,6 @@ export function SurveyMap({ points, bounds, selected, onSelect }: Props) {
     if (source?.setTiles) source.setTiles([BASEMAPS[basemap].tiles]);
   }, [basemap]);
 
-  // マーカー
   useEffect(() => {
     const m = map.current;
     if (!m) return;
@@ -120,43 +117,43 @@ export function SurveyMap({ points, bounds, selected, onSelect }: Props) {
     for (const marker of markers.current.values()) marker.remove();
     markers.current.clear();
 
-    for (const p of points) {
+    for (const entry of entries) {
       const el = document.createElement("button");
       el.type = "button";
-      el.className = "survey-pin";
-      el.dataset.state = p.scenes.length ? "placed" : "empty";
-      el.textContent = p.id.replace(/^p0?/, "");
-      el.title = p.scenes.length
-        ? p.scenes.map((s) => s.title).join(", ")
-        : "シーン未割り当て";
+      el.className = "tree-pin";
+      el.dataset.estimated = String(entry.estimated);
+      el.textContent = entry.scene.title;
+      el.title = entry.trees
+        .map((t) => `${t.id}: ${t.diameter ? `${t.diameter} cm` : "直径未測定"}`)
+        .join(" / ");
       el.addEventListener("click", (event) => {
         event.stopPropagation();
-        onSelect(p.id);
+        onSelect(entry.scene.id);
       });
 
       markers.current.set(
-        p.id,
+        entry.scene.id,
         new Marker({ element: el })
-          .setLngLat([p.longitude, p.latitude])
+          .setLngLat([entry.longitude, entry.latitude])
           .addTo(m),
       );
     }
-  }, [points, onSelect]);
+  }, [entries, onSelect]);
 
-  // 選択状態をマーカーに反映し、選ばれた地点に寄る
+  // 選択状態をマーカーに反映し、選ばれた木に寄る
   useEffect(() => {
     for (const [id, marker] of markers.current) {
       marker.getElement().dataset.selected = String(id === selected);
     }
-    const p = points.find((x) => x.id === selected);
-    if (p && map.current) {
+    const entry = entries.find((e) => e.scene.id === selected);
+    if (entry && map.current) {
       map.current.easeTo({
-        center: [p.longitude, p.latitude],
+        center: [entry.longitude, entry.latitude],
         zoom: Math.max(map.current.getZoom(), 19),
         duration: 600,
       });
     }
-  }, [selected, points]);
+  }, [selected, entries]);
 
   return (
     <div className="relative h-full w-full">

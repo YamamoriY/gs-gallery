@@ -67,6 +67,24 @@ function countImages(project) {
     );
 }
 
+/**
+ * ファイル名からこのシーンに写っている立木の番号を出す。
+ *
+ *   684      -> ["684"]
+ *   687-688  -> ["687", "688"]        萌芽更新した株を 1 回で撮ったもの
+ *   689-691  -> ["689", "690", "691"]
+ *
+ * 番号でない名前 (15tree など) は立木と結び付かないので空になる。
+ */
+function treeIdsFromSlug(slug) {
+  const m = slug.match(/^(\d+)(?:-(\d+))?$/);
+  if (!m) return [];
+  const from = Number(m[1]);
+  const to = m[2] === undefined ? from : Number(m[2]);
+  if (to < from || to - from > 20) return [String(from)];
+  return Array.from({ length: to - from + 1 }, (_, i) => String(from + i));
+}
+
 /** 変換済み SOG に実際に何点入っているかを splat-transform に聞く */
 function countGaussians(sogPath) {
   try {
@@ -152,8 +170,8 @@ function main() {
         shDegree,
       },
       converted,
-      // data/survey-points.json の地点 id。書くと地図にピンが立つ
-      pointId: overrides[id]?.pointId ?? null,
+      // data/trees.json の立木番号。既定はファイル名から決まる
+      treeIds: overrides[id]?.trees ?? treeIdsFromSlug(slug),
       thumbnail: overrides[id]?.thumbnail ?? findThumb(id),
       hidden: overrides[id]?.hidden ?? false,
     };
