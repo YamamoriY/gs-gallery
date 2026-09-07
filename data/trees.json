@@ -1,5 +1,5 @@
 {
-  "_comment": "現地で測った立木。番号は現地の立木番号で、成果物の PLY の名前と一致する。1 つのシーンが複数の立木を含むことがある (萌芽更新した株を 1 回の撮影でまとめて撮っているため)。シーンとの対応はファイル名から自動で決まる。",
+  "_comment": "現地で測った立木。番号は現地の立木番号で、成果物の PLY の名前と一致する。1 つのシーンが複数の立木を含むことがある (萌芽更新した株を 1 回の撮影でまとめて撮っているため)。シーンとの対応はファイル名から自動で決まる。height (m) と volume (m3) は測れたら入れる。1 本でも値が入るとその列が一覧に出る。",
   "_precision": "元の測定値は度分秒で秒が 0.1 秒刻み。地上ではおよそ 3 m 相当なので、十進度の下 6 桁まで書いてあっても実際の精度はそこまで無い。幹の同定は番号と直径で行い、座標は現地に着くまでの目安として使う。",
   "source": {
     "name": "ミズナラ_直径測定",
@@ -15,7 +15,9 @@
       "latitude": 42.1065,
       "longitude": 140.682333,
       "positionEstimated": false,
-      "note": ""
+      "note": "",
+      "height": null,
+      "volume": null
     },
     {
       "id": "685",
@@ -24,7 +26,9 @@
       "latitude": 42.10725,
       "longitude": 140.681167,
       "positionEstimated": false,
-      "note": ""
+      "note": "",
+      "height": null,
+      "volume": null
     },
     {
       "id": "686",
@@ -33,7 +37,9 @@
       "latitude": 42.10725,
       "longitude": 140.68125,
       "positionEstimated": false,
-      "note": ""
+      "note": "",
+      "height": null,
+      "volume": null
     },
     {
       "id": "687",
@@ -42,7 +48,9 @@
       "latitude": 42.106778,
       "longitude": 140.681333,
       "positionEstimated": false,
-      "note": "萌芽更新した株。688 と同じ株から出ている"
+      "note": "萌芽更新した株。688 と同じ株から出ている",
+      "height": null,
+      "volume": null
     },
     {
       "id": "688",
@@ -51,16 +59,20 @@
       "latitude": 42.106806,
       "longitude": 140.681306,
       "positionEstimated": false,
-      "note": "萌芽更新した株。687 と同じ株から出ている"
+      "note": "萌芽更新した株。687 と同じ株から出ている",
+      "height": null,
+      "volume": null
     },
     {
       "id": "692",
-      "species": "ミズナラ",
+      "species": "ハリギリ",
       "diameter": 52,
       "latitude": 42.106861,
       "longitude": 140.682056,
       "positionEstimated": false,
-      "note": ""
+      "note": "",
+      "height": null,
+      "volume": null
     },
     {
       "id": "693",
@@ -69,7 +81,9 @@
       "latitude": 42.106694,
       "longitude": 140.682167,
       "positionEstimated": false,
-      "note": ""
+      "note": "",
+      "height": null,
+      "volume": null
     },
     {
       "id": "694",
@@ -78,7 +92,9 @@
       "latitude": 42.106472,
       "longitude": 140.682167,
       "positionEstimated": false,
-      "note": ""
+      "note": "",
+      "height": null,
+      "volume": null
     },
     {
       "id": "695",
@@ -87,7 +103,9 @@
       "latitude": 42.106417,
       "longitude": 140.682083,
       "positionEstimated": false,
-      "note": ""
+      "note": "",
+      "height": null,
+      "volume": null
     },
     {
       "id": "696",
@@ -96,7 +114,9 @@
       "latitude": 42.1065,
       "longitude": 140.681306,
       "positionEstimated": false,
-      "note": ""
+      "note": "",
+      "height": null,
+      "volume": null
     },
     {
       "id": "689",
@@ -105,7 +125,9 @@
       "latitude": 42.10668,
       "longitude": 140.682194,
       "positionEstimated": true,
-      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている"
+      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている",
+      "height": null,
+      "volume": null
     },
     {
       "id": "690",
@@ -114,7 +136,9 @@
       "latitude": 42.10668,
       "longitude": 140.682194,
       "positionEstimated": true,
-      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている"
+      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている",
+      "height": null,
+      "volume": null
     },
     {
       "id": "691",
@@ -123,7 +147,9 @@
       "latitude": 42.10668,
       "longitude": 140.682194,
       "positionEstimated": true,
-      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている"
+      "note": "位置未測定。684 と 692 の中点に置いている。萌芽更新した株で 689・690・691 の 3 本が同じ株から出ている",
+      "height": null,
+      "volume": null
     }
   ]
 }

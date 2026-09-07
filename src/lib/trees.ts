@@ -9,6 +9,10 @@ export interface Tree {
   species: string;
   /** 胸高直径 (cm) */
   diameter: number | null;
+  /** 樹高 (m)。測れたら入れる */
+  height: number | null;
+  /** 材積 (m3)。測れたら入れる */
+  volume: number | null;
   latitude: number;
   longitude: number;
   /** 実測ではなく他の木から推定した位置か */
@@ -102,6 +106,58 @@ export function getTreesWithScene(): TreeWithScene[] {
     }
   }
   return out;
+}
+
+/**
+ * 一覧の 1 行。
+ *
+ * 幹ごとに 1 行が基本だが、直径も位置も分かっていない幹は互いに区別が
+ * つかないので 1 行にまとめる (萌芽更新した株の 689・690・691 など)。
+ * 同じ内容の行が並ぶだけで読みにくくなるため。
+ */
+export interface TreeRow {
+  key: string;
+  ids: string[];
+  species: string;
+  diameter: number | null;
+  height: number | null;
+  volume: number | null;
+  latitude: number;
+  longitude: number;
+  positionEstimated: boolean;
+  scene: Scene;
+  /** 同じ株から出ていて、この行には含まれない幹 */
+  siblingIds: string[];
+}
+
+export function getTreeRows(): TreeRow[] {
+  const rows: TreeRow[] = [];
+
+  for (const entry of getSceneTrees()) {
+    const measured = entry.trees.filter((t) => t.diameter !== null);
+    const unmeasured = entry.trees.filter((t) => t.diameter === null);
+
+    const make = (trees: Tree[]): TreeRow => ({
+      key: `${entry.scene.id}:${trees.map((t) => t.id).join("-")}`,
+      ids: trees.map((t) => t.id),
+      species: trees[0].species,
+      diameter: trees[0].diameter,
+      height: trees[0].height,
+      volume: trees[0].volume,
+      latitude: trees[0].latitude,
+      longitude: trees[0].longitude,
+      positionEstimated: trees.some((t) => t.positionEstimated),
+      scene: entry.scene,
+      siblingIds: entry.trees
+        .filter((t) => !trees.includes(t))
+        .map((t) => t.id),
+    });
+
+    for (const tree of measured) rows.push(make([tree]));
+    if (unmeasured.length) rows.push(make(unmeasured));
+  }
+
+  return rows;
 }
 
 /** まだ立木が結び付いていないシーン */

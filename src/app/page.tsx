@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { TreeTable } from "@/components/TreeTable";
 import { getScenes, formatBytes } from "@/lib/scenes";
-import { getTreesWithScene, getScenesWithoutTrees } from "@/lib/trees";
+import { getTreeRows, getScenesWithoutTrees, getTrees } from "@/lib/trees";
 
 export default function Home() {
-  const rows = getTreesWithScene();
+  const rows = getTreeRows();
   const scenes = getScenes();
   const orphans = getScenesWithoutTrees();
-  const measured = rows.filter((r) => r.tree.diameter !== null);
+  const trees = getTrees();
+  const measured = trees.filter((t) => t.diameter !== null);
   const totalBytes = scenes.reduce((a, s) => a + (s.converted?.bytes ?? 0), 0);
 
   return (
@@ -38,7 +39,7 @@ export default function Home() {
           <TreeTable rows={rows} />
 
           <p className="mt-4 text-xs text-paper-dim">
-            {rows.length} 本 / {scenes.length} シーン。
+            {trees.length} 本 / {scenes.length} シーン。
             うち直径を測ってあるのは {measured.length} 本。
             配信データは合計 {formatBytes(totalBytes)}。
           </p>
