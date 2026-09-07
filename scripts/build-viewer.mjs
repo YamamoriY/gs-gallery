@@ -31,9 +31,18 @@ const outDir = path.join(PUBLIC_DIR, "viewer");
 
 fs.mkdirSync(outDir, { recursive: true });
 
-// ビューアの背景色。サイトが明るい配色なので白で揃える。
-// 0..1 で指定する (settings の background.color と同じ形式)。
-const BACKGROUND = [1, 1, 1];
+/**
+ * ビューアの背景色 (0..1)。
+ *
+ * サイトが明るい配色なので白にしてみたが、このデータには合わなかった。
+ * 森のスキャンは葉と葉の隙間から背景が透けるので、白だと隙間が白く抜けて
+ * 穴だらけに見える。明るさを持ち上げると隙間がさらに目立って逆効果だった。
+ * 暗い背景だと隙間が沈んで森として読める。
+ *
+ * 真っ黒ではなく僅かに green 寄りの暗色にして、明るいページの中で
+ * 写真の枠のように見えるようにしている。
+ */
+const BACKGROUND = [0.1, 0.11, 0.1];
 
 // index.html は renderViewerHtml() から。
 // backgroundColor は最初のフレームが出る前の下地に使われる。
