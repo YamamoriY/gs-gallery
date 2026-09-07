@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T04:17:49.655Z",
+  "generatedAt": "2026-09-07T05:40:26.238Z",
   "scenes": [
     {
       "id": "20260831_15tree",
@@ -44,12 +44,12 @@
       },
       "converted": {
         "file": "gs/20260831_596-599.sog",
-        "bytes": 12692109,
+        "bytes": 12604376,
         "gaussians": 1000000,
         "size": [
-          29.998,
-          21.543,
-          24.999
+          29.999,
+          21.561,
+          24.992
         ]
       },
       "treeIds": [
@@ -84,7 +84,7 @@
       "title": "684",
       "description": "",
       "warning": null,
-      "metresPerUnit": null,
+      "metresPerUnit": 0.6727,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -98,12 +98,12 @@
       },
       "converted": {
         "file": "gs/20260902_684.sog",
-        "bytes": 13076495,
+        "bytes": 13016829,
         "gaussians": 1000000,
         "size": [
-          18.5,
-          16.562,
-          18.999
+          18.497,
+          16.522,
+          19
         ]
       },
       "treeIds": [
@@ -116,7 +116,7 @@
       "title": "685",
       "description": "",
       "warning": null,
-      "metresPerUnit": null,
+      "metresPerUnit": 0.9069,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -130,11 +130,11 @@
       },
       "converted": {
         "file": "gs/20260902_685.sog",
-        "bytes": 11919573,
-        "gaussians": 914386,
+        "bytes": 13048660,
+        "gaussians": 1000000,
         "size": [
-          18.997,
-          13.84,
+          18.999,
+          13.836,
           18.5
         ]
       },
@@ -148,7 +148,7 @@
       "title": "686",
       "description": "",
       "warning": null,
-      "metresPerUnit": 0.3566,
+      "metresPerUnit": 0.3492,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -162,12 +162,12 @@
       },
       "converted": {
         "file": "gs/20260902_686.sog",
-        "bytes": 13064958,
+        "bytes": 13048475,
         "gaussians": 1000000,
         "size": [
-          33.998,
-          28.216,
-          38.495
+          33.997,
+          28.31,
+          38.487
         ]
       },
       "treeIds": [
@@ -194,12 +194,12 @@
       },
       "converted": {
         "file": "gs/20260902_687-688.sog",
-        "bytes": 12994512,
+        "bytes": 12941270,
         "gaussians": 1000000,
         "size": [
-          42.97,
-          42.076,
-          46.496
+          42.965,
+          42.07,
+          46.495
         ]
       },
       "treeIds": [
@@ -213,7 +213,7 @@
       "title": "689-691",
       "description": "萌芽更新した株。689・690・691 の 3 本の幹が同じ株から出ている。",
       "warning": null,
-      "metresPerUnit": 0.2962,
+      "metresPerUnit": 0.2927,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -227,12 +227,12 @@
       },
       "converted": {
         "file": "gs/20260902_689-691.sog",
-        "bytes": 12966770,
+        "bytes": 12885369,
         "gaussians": 1000000,
         "size": [
-          39.999,
-          36.578,
-          36.495
+          39.996,
+          36.955,
+          36.494
         ]
       },
       "treeIds": [
@@ -247,7 +247,7 @@
       "title": "692",
       "description": "",
       "warning": null,
-      "metresPerUnit": 0.5835,
+      "metresPerUnit": 0.5978,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-03",
@@ -261,12 +261,12 @@
       },
       "converted": {
         "file": "gs/20260902_692.sog",
-        "bytes": 13046874,
+        "bytes": 13040808,
         "gaussians": 1000000,
         "size": [
-          23.499,
-          15.88,
-          18.498
+          23.495,
+          15.895,
+          18.5
         ]
       },
       "treeIds": [
@@ -279,7 +279,7 @@
       "title": "693",
       "description": "693 は 2026-09-07 に学習をやり直したもの。",
       "warning": null,
-      "metresPerUnit": 0.3249,
+      "metresPerUnit": 0.3262,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-07",
@@ -293,12 +293,12 @@
       },
       "converted": {
         "file": "gs/20260902_693.sog",
-        "bytes": 12965611,
+        "bytes": 12886576,
         "gaussians": 1000000,
         "size": [
-          46.998,
-          37.204,
-          45.998
+          46.997,
+          37.2,
+          45.997
         ]
       },
       "treeIds": [
@@ -325,12 +325,12 @@
       },
       "converted": {
         "file": "gs/20260902_694.sog",
-        "bytes": 13240496,
+        "bytes": 13062545,
         "gaussians": 1000000,
         "size": [
-          45.998,
-          41.654,
-          45.479
+          45.988,
+          41.951,
+          45.494
         ]
       },
       "treeIds": [
@@ -343,7 +343,7 @@
       "title": "695",
       "description": "",
       "warning": null,
-      "metresPerUnit": 0.3697,
+      "metresPerUnit": 0.385,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
@@ -357,12 +357,12 @@
       },
       "converted": {
         "file": "gs/20260902_695.sog",
-        "bytes": 13066659,
+        "bytes": 12971946,
         "gaussians": 1000000,
         "size": [
-          19.993,
-          20.469,
-          19.999
+          19.991,
+          20.462,
+          19.997
         ]
       },
       "treeIds": [
@@ -375,7 +375,7 @@
       "title": "696",
       "description": "",
       "warning": null,
-      "metresPerUnit": 0.3205,
+      "metresPerUnit": 0.3242,
       "tags": [],
       "capturedAt": "2026-09-02",
       "trainedAt": "2026-09-04",
@@ -389,12 +389,12 @@
       },
       "converted": {
         "file": "gs/20260902_696.sog",
-        "bytes": 12958986,
+        "bytes": 12877476,
         "gaussians": 1000000,
         "size": [
-          52.999,
+          52.997,
           38.887,
-          46.996
+          46.995
         ]
       },
       "treeIds": [

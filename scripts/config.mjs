@@ -52,9 +52,12 @@ export const DENOISE = {
   minSamples: 20,
   minCluster: 5000,
   cell: 0.5,
-  maxScale: 0.15,
-  maxAniso: 30,
-  minOpacity: 0.15,
+  // 形状フィルタ (maxScale / maxAniso / minOpacity) は既定で掛けない。
+  // 3DGS は硬い面を「面に沿った平たい円盤」で表すので、幹の樹皮は
+  // 本質的に異方性が高い。靄を消そうとして異方性で切ると幹の表面が
+  // 消えて中が透ける。20260902_693 で切り分けたところ、外すだけで
+  // 点数も容量も変えずに幹が埋まった。
+  // 掛けたいシーンだけ overrides の denoise に書く。
 };
 
 /** denoise.py に渡すときのフラグ名 */

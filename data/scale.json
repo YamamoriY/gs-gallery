@@ -1,45 +1,58 @@
 {
   "_comment": "scripts/measure-scale.mjs が書き出す。橙色のヘリポート (一辺 50cm) を物差しにして測った 1 ユニットあたりのメートル数。手で決めたい場合は scenes.overrides.json の metresPerUnit が優先される。 見つからないシーンは found: false のままにしてある。カメラの地上高を物差しにする方法も試したが、下草や落葉を地面と誤認してばらつきが中央値と同程度になり、使えなかった。",
-  "generatedAt": "2026-09-07T03:44:44.055Z",
+  "generatedAt": "2026-09-07T05:40:15.161Z",
   "markerSideMetres": 0.5,
   "scenes": {
     "20260902_684": {
-      "found": false,
-      "reason": "形が正方形の板になっていない",
-      "points": 102,
+      "found": true,
+      "reason": null,
+      "points": 249,
       "size": [
-        0.745,
-        0.48
+        0.775,
+        0.711
       ],
-      "squareness": 0.645,
-      "flatness": 0.447,
+      "squareness": 0.917,
+      "flatness": 0.237,
       "centre": [
-        -1.7,
-        5.056,
-        -0.944
+        -1.66,
+        5.028,
+        -1.166
       ],
-      "metresPerUnit": 0.8167
+      "metresPerUnit": 0.6727
     },
     "20260902_685": {
-      "found": false,
-      "reason": "十分な大きさのまとまりが無い"
+      "found": true,
+      "reason": null,
+      "points": 136,
+      "size": [
+        0.547,
+        0.556
+      ],
+      "squareness": 0.983,
+      "flatness": 0.29,
+      "centre": [
+        1.215,
+        4.036,
+        4.759
+      ],
+      "metresPerUnit": 0.9069
     },
     "20260902_686": {
       "found": true,
       "reason": null,
-      "points": 1276,
+      "points": 1116,
       "size": [
-        1.404,
-        1.4
+        1.459,
+        1.404
       ],
-      "squareness": 0.997,
-      "flatness": 0.166,
+      "squareness": 0.962,
+      "flatness": 0.168,
       "centre": [
-        -6.487,
-        6.32,
-        5.527
+        -6.466,
+        6.312,
+        5.552
       ],
-      "metresPerUnit": 0.3566
+      "metresPerUnit": 0.3492
     },
     "20260902_687-688": {
       "found": false,
@@ -48,119 +61,119 @@
     "20260902_689-691": {
       "found": true,
       "reason": null,
-      "points": 931,
+      "points": 1498,
       "size": [
-        1.659,
-        1.717
+        1.7,
+        1.716
       ],
-      "squareness": 0.966,
-      "flatness": 0.148,
+      "squareness": 0.991,
+      "flatness": 0.119,
       "centre": [
-        5.675,
-        10.338,
-        5.631
+        5.459,
+        10.349,
+        5.536
       ],
-      "metresPerUnit": 0.2962
+      "metresPerUnit": 0.2927
     },
     "20260902_692": {
       "found": true,
       "reason": null,
-      "points": 990,
+      "points": 806,
       "size": [
-        0.909,
-        0.805
+        0.862,
+        0.811
       ],
-      "squareness": 0.885,
-      "flatness": 0.223,
+      "squareness": 0.94,
+      "flatness": 0.232,
       "centre": [
-        7.28,
-        4.099,
-        -1.293
+        7.288,
+        4.094,
+        -1.256
       ],
-      "metresPerUnit": 0.5835
+      "metresPerUnit": 0.5978
     },
     "20260902_693": {
       "found": true,
       "reason": null,
-      "points": 3398,
+      "points": 3761,
       "size": [
-        1.559,
-        1.519
+        1.531,
+        1.535
       ],
-      "squareness": 0.974,
-      "flatness": 0.184,
+      "squareness": 0.997,
+      "flatness": 0.2,
       "centre": [
-        -2.664,
-        6.081,
-        1.063
+        -2.712,
+        6.077,
+        1.033
       ],
-      "metresPerUnit": 0.3249
+      "metresPerUnit": 0.3262
     },
     "20260902_694": {
       "found": false,
       "reason": "形が正方形の板になっていない",
-      "points": 184,
+      "points": 239,
       "size": [
-        1.198,
-        0.609
+        0.808,
+        1.217
       ],
-      "squareness": 0.508,
-      "flatness": 0.218,
+      "squareness": 0.664,
+      "flatness": 0.23,
       "centre": [
-        -6.65,
-        20.046,
-        1.306
+        -6.918,
+        20.094,
+        1.351
       ],
-      "metresPerUnit": 0.5533
+      "metresPerUnit": 0.4939
     },
     "20260902_695": {
       "found": true,
       "reason": null,
-      "points": 2575,
+      "points": 2678,
       "size": [
-        1.434,
-        1.271
+        1.284,
+        1.313
       ],
-      "squareness": 0.887,
-      "flatness": 0.249,
+      "squareness": 0.978,
+      "flatness": 0.227,
       "centre": [
-        -1.698,
-        8.903,
-        3.124
+        -1.7,
+        8.888,
+        3.115
       ],
-      "metresPerUnit": 0.3697
+      "metresPerUnit": 0.385
     },
     "20260902_696": {
       "found": true,
       "reason": null,
-      "points": 3504,
+      "points": 3763,
       "size": [
-        1.588,
-        1.532
+        1.556,
+        1.529
       ],
-      "squareness": 0.964,
-      "flatness": 0.176,
+      "squareness": 0.983,
+      "flatness": 0.183,
       "centre": [
-        -2.634,
-        6.079,
-        1.078
+        -2.698,
+        6.076,
+        1.037
       ],
-      "metresPerUnit": 0.3205
+      "metresPerUnit": 0.3242
     },
     "20260831_596-599": {
       "found": true,
       "reason": null,
-      "points": 551,
+      "points": 790,
       "size": [
-        1.146,
-        1.346
+        1.272,
+        1.219
       ],
-      "squareness": 0.851,
-      "flatness": 0.294,
+      "squareness": 0.958,
+      "flatness": 0.237,
       "centre": [
-        5.488,
-        4.093,
-        5.713
+        5.505,
+        4.071,
+        5.779
       ],
       "metresPerUnit": 0.4014
     }

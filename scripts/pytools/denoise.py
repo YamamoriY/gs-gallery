@@ -10,11 +10,16 @@
   3. 芯を平面グリッドに焼いて footprint を作る
   4. footprint の中にある点を 1. の点群から全部拾い直す
      DBSCAN が未分類として捨てた疎な葉がここで戻る
-  5. 形と不透明度で、靄の原因になるガウシアンを落とす
+  5. 形と不透明度でガウシアンを落とす (既定では掛けない)
 
-5 が要る理由: 3DGS は極端に平たい板や針状のガウシアンを大量に作る。
-このデータでは異方性 (最長軸÷最短軸) が中央値 12 倍、上位 10% で 132 倍、
-最大 230 万倍あった。小さくても面積は稼ぐので、大きさだけでは取り切れない。
+5 は既定で無効。3DGS は硬い面を「面に沿った平たい円盤」で表すので、
+幹の樹皮は本質的に異方性が高い。靄を消そうとして異方性で切ると、
+幹の表面そのものが消えて中が透ける。黒い背景では幹が黒く沈むため
+気付けなかったが、白い背景にすると一目で分かる。
+
+20260902_693 で切り分けたところ、形状フィルタを外すだけで
+点数も容量も変えずに幹が埋まった。靄は残るが白背景では気にならない。
+掛けたい場合は --max-scale などを明示的に渡す。
 """
 import argparse
 import sys
@@ -43,11 +48,12 @@ def parse_args():
                    help="芯として採用するクラスタの最小点数")
     p.add_argument("--cell", type=float, default=0.5,
                    help="footprint のグリッド解像度 (m)")
-    p.add_argument("--max-scale", type=float, default=0.15,
+    # 形状フィルタは既定で掛けない。渡したものだけが効く
+    p.add_argument("--max-scale", type=float, default=None,
                    help="ガウシアンの最長軸の上限 (m)")
-    p.add_argument("--max-aniso", type=float, default=30.0,
-                   help="最長軸 ÷ 最短軸 の上限")
-    p.add_argument("--min-opacity", type=float, default=0.15,
+    p.add_argument("--max-aniso", type=float, default=None,
+                   help="最長軸 ÷ 最短軸 の上限。幹の表面も異方性が高いので注意")
+    p.add_argument("--min-opacity", type=float, default=None,
                    help="不透明度の下限")
     return p.parse_args()
 
@@ -129,18 +135,25 @@ def footprint_mask(points, core, cell):
 
 
 def shape_mask(vertices, max_scale, max_aniso, min_opacity):
-    """靄の原因になる、平たすぎる・大きすぎる・薄すぎるガウシアンを落とす"""
+    """指定された条件だけでガウシアンを絞る。何も渡されなければ全部残す"""
+    keep = np.ones(len(vertices), dtype=bool)
+    if max_scale is None and max_aniso is None and min_opacity is None:
+        return keep
+
     # 3DGS の PLY は scale を log で持つ
     scales = np.exp(
         np.stack([vertices["scale_0"], vertices["scale_1"], vertices["scale_2"]], -1)
     )
     scales = np.sort(scales, axis=1)[:, ::-1]  # 長い順
-    opacity = 1.0 / (1.0 + np.exp(-vertices["opacity"]))
-
     longest = scales[:, 0]
-    aniso = longest / np.maximum(scales[:, 2], 1e-9)
 
-    return (longest < max_scale) & (aniso < max_aniso) & (opacity > min_opacity)
+    if max_scale is not None:
+        keep &= longest < max_scale
+    if max_aniso is not None:
+        keep &= longest / np.maximum(scales[:, 2], 1e-9) < max_aniso
+    if min_opacity is not None:
+        keep &= 1.0 / (1.0 + np.exp(-vertices["opacity"])) > min_opacity
+    return keep
 
 
 def main():
@@ -181,8 +194,12 @@ def main():
         vertices[kept], args.max_scale, args.max_aniso, args.min_opacity
     )
     kept = kept[mask]
-    log(f"5. 形と不透明度で絞って {len(kept):,} 点 "
-        f"({len(kept) / total * 100:.1f}% of 原データ)")
+    if mask.all():
+        log(f"5. 形状フィルタなし。{len(kept):,} 点 "
+            f"({len(kept) / total * 100:.1f}% of 原データ)")
+    else:
+        log(f"5. 形と不透明度で絞って {len(kept):,} 点 "
+            f"({len(kept) / total * 100:.1f}% of 原データ)")
 
     PlyData([PlyElement.describe(vertices[kept], "vertex")], text=False).write(
         args.output
