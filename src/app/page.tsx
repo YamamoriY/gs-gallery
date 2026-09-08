@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { TreeTable } from "@/components/TreeTable";
+import { PlotTable } from "@/components/PlotTable";
 import { getScenes, formatBytes } from "@/lib/scenes";
 import { getTreeRows, getScenesWithoutTrees, getTrees } from "@/lib/trees";
+import { getPlotsWithScene } from "@/lib/plots";
 
 export default function Home() {
   const rows = getTreeRows();
   const scenes = getScenes();
-  const orphans = getScenesWithoutTrees();
+  const orphans = getScenesWithoutTrees().filter((s) => !s.plotId);
   const trees = getTrees();
+  const plots = getPlotsWithScene();
   const measured = trees.filter((t) => t.diameter !== null);
   const totalBytes = scenes.reduce((a, s) => a + (s.converted?.bytes ?? 0), 0);
 
@@ -44,6 +47,19 @@ export default function Home() {
             配信データは合計 {formatBytes(totalBytes)}。
           </p>
         </>
+      )}
+
+      {plots.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-lg font-semibold tracking-tight">標準地</h2>
+          <p className="mt-2 max-w-2xl text-sm text-paper-dim">
+            林分をまとめて撮ったスキャンです。個体ではなく区画を指すので、
+            立木番号ではなく林班番号で管理します。
+          </p>
+          <div className="mt-4">
+            <PlotTable rows={plots} />
+          </div>
+        </section>
       )}
 
       {orphans.length > 0 && (

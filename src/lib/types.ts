@@ -55,6 +55,11 @@ export interface Scene {
   source: SceneSource;
   converted: SceneConverted | null;
   treeIds: TreeId[];
+  /**
+   * 標準地の識別子。data/plots.json の id を指す。
+   * 林分をまとめて撮ったスキャンはこちらに結び付く (立木ではなく)。
+   */
+  plotId: string | null;
   hidden: boolean;
 }
 

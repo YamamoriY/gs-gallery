@@ -1,15 +1,17 @@
 {
-  "generatedAt": "2026-09-07T07:40:50.009Z",
+  "generatedAt": "2026-09-08T02:15:57.163Z",
   "scenes": [
     {
       "id": "20260831_15tree",
       "title": "15tree",
-      "description": "15 本の樹 (Osmo)。ミズナラ直径測定の対象ではないので一旦アーカイブから外している",
+      "description": "15 本の樹をまとめて撮った広域のスキャン。単木ではなく標準地として扱う。",
       "warning": null,
       "metresPerUnit": null,
-      "tags": [],
+      "tags": [
+        "Osmo"
+      ],
       "capturedAt": "2026-08-31",
-      "trainedAt": "2026-09-02",
+      "trainedAt": "2026-09-07",
       "sourceProject": "2026-08-31_15tree_osmo",
       "imageCount": 775,
       "source": {
@@ -17,11 +19,26 @@
         "bytes": 1240001532,
         "gaussians": 5000000,
         "shDegree": 3,
-        "fingerprint": "2de1b2dc7e624b66"
+        "fingerprint": "b6e3d90c4bab66d6"
       },
-      "converted": null,
+      "converted": {
+        "file": "gs/20260831_15tree.sog",
+        "bytes": 12851348,
+        "gaussians": 1000000,
+        "size": [
+          565.189,
+          318.846,
+          569.148
+        ],
+        "centre": [
+          -57.507,
+          18.44,
+          -166.766
+        ]
+      },
       "treeIds": [],
-      "hidden": true
+      "plotId": "15tree",
+      "hidden": false
     },
     {
       "id": "20260831_596-599",
@@ -63,6 +80,7 @@
         "596",
         "599"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -85,6 +103,7 @@
       },
       "converted": null,
       "treeIds": [],
+      "plotId": null,
       "hidden": true
     },
     {
@@ -123,6 +142,7 @@
       "treeIds": [
         "684"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -161,6 +181,7 @@
       "treeIds": [
         "685"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -199,6 +220,7 @@
       "treeIds": [
         "686"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -238,6 +260,7 @@
         "687",
         "688"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -278,6 +301,7 @@
         "690",
         "691"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -316,6 +340,7 @@
       "treeIds": [
         "692"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -354,6 +379,7 @@
       "treeIds": [
         "693"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -392,6 +418,7 @@
       "treeIds": [
         "694"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -430,6 +457,7 @@
       "treeIds": [
         "695"
       ],
+      "plotId": null,
       "hidden": false
     },
     {
@@ -468,6 +496,7 @@
       "treeIds": [
         "696"
       ],
+      "plotId": null,
       "hidden": false
     }
   ]

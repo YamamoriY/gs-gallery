@@ -1,0 +1,25 @@
+{
+  "_comment": "標準地。単木 (trees.json) とは別の実体で、林分をまとめて撮ったスキャンに対応する。林班番号と面積は林班図や現地の実測値を手で書く。footprint から面積を計算することもできるが、スケールを信頼できる形で得られていないので出さない (README「スケール」参照)。",
+  "_fields": {
+    "id": "シーンから参照する識別子",
+    "compartment": "林班番号",
+    "subCompartment": "小班番号",
+    "areaHectares": "面積 (ha)。実測値を書く。分からなければ null",
+    "shape": "形状の説明 (方形 20m x 20m など)。分からなければ空",
+    "latitude": "代表点の緯度。分からなければ null",
+    "longitude": "代表点の経度。分からなければ null",
+    "note": "備考"
+  },
+  "plots": [
+    {
+      "id": "15tree",
+      "compartment": null,
+      "subCompartment": null,
+      "areaHectares": null,
+      "shape": "",
+      "latitude": null,
+      "longitude": null,
+      "note": "2026-08-31 に Osmo で撮影。15 本の樹をまとめたスキャン。林班番号と面積は未登録"
+    }
+  ]
+}

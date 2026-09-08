@@ -252,6 +252,8 @@ function main() {
       converted,
       // data/trees.json の立木番号。既定はファイル名から決まる
       treeIds: overrides[id]?.trees ?? treeIdsFromSlug(slug),
+      // data/plots.json の標準地。林分をまとめて撮ったシーンに書く
+      plotId: overrides[id]?.plot ?? null,
       hidden: overrides[id]?.hidden ?? false,
     };
   });
