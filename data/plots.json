@@ -15,11 +15,11 @@
       "id": "15tree",
       "compartment": null,
       "subCompartment": null,
-      "areaHectares": null,
-      "shape": "",
+      "areaHectares": 0.02,
+      "shape": "方形 20m × 10m",
       "latitude": null,
       "longitude": null,
-      "note": "2026-08-31 に Osmo で撮影。15 本の樹をまとめたスキャン。林班番号と面積は未登録"
+      "note": "2026-08-31 に Osmo で撮影。15 本の樹をまとめたスキャン。林班番号は未登録"
     }
   ]
 }

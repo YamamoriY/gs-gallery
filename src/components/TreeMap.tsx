@@ -58,6 +58,13 @@ function styleFor(key: BasemapKey): StyleSpecification {
   };
 }
 
+/**
+ * 林班・小班の境界。北海道オープンデータの森林計画資料を
+ * scripts/pytools/compartments.py で GeoJSON にしたもの。
+ * 無ければ切り替えボタン自体を出さない。
+ */
+const COMPARTMENTS = "compartments.geojson";
+
 interface Props {
   entries: SceneTrees[];
   bounds: [[number, number], [number, number]];
@@ -72,6 +79,8 @@ export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
   const map = useRef<MapLibreMap | null>(null);
   const markers = useRef<globalThis.Map<string, Marker>>(new globalThis.Map());
   const [basemap, setBasemap] = useState<BasemapKey>("photo");
+  const [showCompartments, setShowCompartments] = useState(false);
+  const [hasCompartments, setHasCompartments] = useState(false);
 
   // 地図の生成は一度だけ。以降はレイヤーとマーカーを差し替える
   useEffect(() => {
@@ -85,6 +94,54 @@ export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
       // 林内の細かい位置合わせをするので、既定より寄れるようにする
       maxZoom: 21,
     });
+    // 林班の境界。航空写真が見えるように塗らず、線と番号だけ出す
+    m.on("load", async () => {
+      const url = assetUrl(COMPARTMENTS);
+      try {
+        const res = await fetch(url, { method: "HEAD" });
+        if (!res.ok) return;
+      } catch {
+        return;
+      }
+      if (m.getSource("compartments")) return;
+      m.addSource("compartments", { type: "geojson", data: url });
+      m.addLayer({
+        id: "compartment-line",
+        type: "line",
+        source: "compartments",
+        layout: { visibility: "none" },
+        paint: {
+          "line-color": "#ffd24a",
+          "line-width": 1.5,
+          "line-opacity": 0.9,
+        },
+      });
+      m.addLayer({
+        id: "compartment-label",
+        type: "symbol",
+        source: "compartments",
+        layout: {
+          visibility: "none",
+          "text-field": [
+            "case",
+            ["all", ["has", "compartment"], ["has", "subCompartment"]],
+            ["concat", ["get", "compartment"], "-", ["get", "subCompartment"]],
+            ["has", "compartment"],
+            ["get", "compartment"],
+            "",
+          ],
+          "text-size": 11,
+          "text-allow-overlap": false,
+        },
+        paint: {
+          "text-color": "#ffd24a",
+          "text-halo-color": "rgba(0,0,0,0.75)",
+          "text-halo-width": 1.4,
+        },
+      });
+      setHasCompartments(true);
+    });
+
     m.addControl(new NavigationControl({ showCompass: false }), "top-right");
     m.addControl(new ScaleControl({ maxWidth: 120, unit: "metric" }));
     m.on("click", () => onSelect(null));
@@ -104,6 +161,16 @@ export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // 林班の表示切替
+  useEffect(() => {
+    const m = map.current;
+    if (!m || !hasCompartments) return;
+    const visibility = showCompartments ? "visible" : "none";
+    for (const id of ["compartment-line", "compartment-label"]) {
+      if (m.getLayer(id)) m.setLayoutProperty(id, "visibility", visibility);
+    }
+  }, [showCompartments, hasCompartments]);
 
   // 背景地図の切り替え。ラスタのタイル URL を差し替えるだけで済ませる
   useEffect(() => {
@@ -179,6 +246,21 @@ export function TreeMap({ entries, bounds, selected, onSelect }: Props) {
           </button>
         ))}
       </div>
+
+      {hasCompartments && (
+        <button
+          type="button"
+          onClick={() => setShowCompartments((v) => !v)}
+          className={
+            "absolute left-3 top-12 rounded border px-3 py-1.5 text-xs backdrop-blur transition " +
+            (showCompartments
+              ? "border-amber-400/70 bg-amber-400/25 text-paper"
+              : "border-line bg-bark/95 text-paper-dim hover:text-paper")
+          }
+        >
+          林班界
+        </button>
+      )}
     </div>
   );
 }

@@ -215,6 +215,31 @@ npm run convert -- --keep-ply             # 中間の PLY を .cache に残す
 広域のスキャンから幹ごとに分割できるようになれば、標準地を親にしてその中の
 単木を並べる形にできる。いまはその技術が無いので切り離してある。
 
+## 林班界を地図に重ねる
+
+北海道オープンデータポータルの「森林計画資料 (一般民有林) 渡島地域」の
+shapefile から、対象地の周りだけを GeoJSON にして地図に重ねられる。
+
+```
+uv run --project scripts/pytools python scripts/pytools/compartments.py   <森林計画資料>.shp public/compartments.geojson   --centre 42.1064,140.6817 --radius 2500
+```
+
+`public/compartments.geojson` があれば地図に「林班界」ボタンが出る。
+無ければボタンごと出ない (ファイルの有無を見て判断している)。
+
+航空写真が見えなくなるので**塗らずに境界線と番号だけ**出す。
+
+- 元データは EPSG:2459 (平面直角座標系 XI 系)。EPSG:4326 に変換する
+- 地域全体だと数十 MB あって GitHub Pages に載らないので、
+  `--radius` で対象地の周りだけ切り出す
+- 森林簿の項目名は自治体ごとに揺れるので、
+  `compartments.py` の `FIELD_ALIASES` で拾える名前を並べている
+
+[YamamoriY/naragare-viewer](https://github.com/YamamoriY/naragare-viewer)
+が同じデータを Leaflet で使っている。あちらは標準ライブラリだけで
+shapefile を読んでいるが、こちらは変換を一度やって GeoJSON にするだけなので
+pyshp と pyproj を使っている。
+
 ## 立木と位置
 
 伐採に行くところまで使うので、3DGS を現地の立木と結び付けている。
